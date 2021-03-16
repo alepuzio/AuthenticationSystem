@@ -1,4 +1,4 @@
-# MMS
+# AUTHENTICATION-SYSTEM
 
 Project in Spring Boot and MVC to sign in and sign up an user using the authentication first factor mechanism.
 
@@ -35,7 +35,7 @@ Project in Spring Boot and MVC to sign in and sign up an user using the authenti
 
 ## Deployment
  
-* Run the command _mvn spring-boot:run -X -e_ or _java -jar target/mms.jar_ ;
+* Run the command _mvn spring-boot:run -X -e_ or _java -jar target/authentication-system.jar_ ;
 * Go to _http://localhost:8080/_;
 * Write the number (max 20 digits) in the inptu text;
 * Click the _submit_ button;
@@ -61,7 +61,6 @@ Project in Spring Boot and MVC to sign in and sign up an user using the authenti
 ## Authors
 
 * **Alessandro Puzielli** - *creator* - [Alepuzio](https://github.com/alepuzio)
-
 * See also the list of [contributors](https://github.com/alepuzio/authentication-system/graphs/contributor) in this project.
 
 ## License

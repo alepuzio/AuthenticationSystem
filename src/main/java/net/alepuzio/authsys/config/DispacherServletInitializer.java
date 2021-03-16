@@ -63,7 +63,7 @@ public class DispacherServletInitializer extends AbstractAnnotationConfigDispatc
 		 * where is the directory with the files to render
 		 * */
 		templateResolver.setPrefix("/templates/");
-		templateResolver.setSuffix(".html");
+		templateResolver.setSuffix(".jsp");
 		templateResolver.setTemplateMode(TemplateMode.HTML);
 		templateResolver.setCharacterEncoding("UTF-8");
 		/* this is important. This way spring
