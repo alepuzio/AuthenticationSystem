@@ -14,4 +14,9 @@ public class UserService {
 	public Persistent save(Generic genericToSave) throws Exception{
 		return jdbcRepository.save(genericToSave);
 	}
+	
+	public Persistent user(Generic genericToRead) throws Exception{
+		return jdbcRepository.save(genericToRead);
+	}
+
 }

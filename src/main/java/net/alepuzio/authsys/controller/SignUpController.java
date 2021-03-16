@@ -20,11 +20,11 @@ public class SignUpController {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ModelAndView signup(@RequestParam /*Generic userToRecord*/Map<String,String >body) {
+	@RequestMapping(value = "/record", method = RequestMethod.POST)
+	public ModelAndView record(@RequestParam Map<String,String >body) {
 		ModelAndView mav = new ModelAndView();
 		Generic userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
-		logger.info(String.format(">signup(%s)", userToRecord.getAnagraphicData().toString()));
+		logger.info(String.format(">record(%s)", userToRecord.getAnagraphicData().toString()));
 		/**
 		 * TODO verify it's not recorded already
 		 * */
