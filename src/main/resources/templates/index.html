@@ -1,17 +1,51 @@
 <!DOCTYPE HTML>
 <html>
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>Sign Up</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p>I'm in templates/index.html</p>
-    	<form action="/string" >
+	<h1>Sign Up</h1>
+	<p>
+		Please fill the form to signup. <br />
+		All the data are mandatory.
+	</p>
+	<form action="/signup">
 		<p>
-			Write the number to remember CCCC <input size="20" id="numberToRemeber" name="number" type="number"/>
+			<label for="name">
+			<b>Name</b> 
+			<input type="text"	placeholder="Enter Name" name="name" required size="20"  >
+			</label> 
+			<label for="name">
+			<b>Surname</b>
+			<input type="text" placeholder="Enter Surname" name="username" required size="20"  > 
+			</label>
+			<label for="name">
+			<b>VATIn</b>
+			<input type="text" placeholder="Enter VATIn" name="vatin" required size="20"  >
+			</label> 
+			<label for="name">
+				<b>Username</b>
+				<input type="text" placeholder="Enter Username" name="username" required size="20"  >
+			</label> 
+			<label for="name">
+				<b>Password</b>
+				<input placeholder="Enter Password" name="password" required size="20" type="password">
+			</label> 
+			<label for="name">
+				<b>Repeat Password</b>
+				<input placeholder="Enter Password" name="repeatedPassword" required size="20" type="password">
+			</label>
 		</p>
-		<input type="submit">
+		<p>
+			By creating an account you agree  <a href="#"style="color: dodgerblue">have more than 18 years</a>.
+		</p>
+
+		<div class="clearfix">
+			<button type="button" class="cancelbtn">Cancel</button><!-- TODO javascript to blank the fields -->
+			<button type="submit" class="signupbtn">Sign Up</button>
+		</div>
 	</form>
-    
+
 </body>
 </html>

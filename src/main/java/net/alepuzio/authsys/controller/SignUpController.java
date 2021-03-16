@@ -13,9 +13,9 @@ public class SignUpController {
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public ModelAndView signup(@RequestParam String number) {
+	public ModelAndView signup(@RequestParam String name) {
 		ModelAndView mav = new ModelAndView();
-		logger.info(String.format(">signup(%s)", number));
+		logger.info(String.format(">signup(%s)", name));
 		return mav;
 	}
 
