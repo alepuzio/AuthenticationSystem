@@ -1,6 +1,5 @@
 package net.alepuzio.authsys;
 
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,6 @@ import net.alepuzio.authsys.domain.user.Generic;
 import net.alepuzio.authsys.domain.user.UserRepository;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
-import net.alepuzio.authsys.domain.user.persistence.Persistent;
 
 import static org.junit.Assert.*;
 
@@ -29,8 +27,8 @@ public class TestUserRepository {
 	public void setUp() throws Exception {
 		Generic user1 = new Generic(new AnagraphicData("User", "recorded", "PALSS"),
 				new SecurityData("username", "password"));
-		Persistent persistentUser = this.userRepository.save(user1);
-		assertNotNull(persistentUser.getId());
+		Generic persistentUser = this.userRepository.save(user1);
+		assertEquals(persistentUser.getAnagraphicData().getName(), user1.getAnagraphicData().getName());
 	}
 	
 	@Test
