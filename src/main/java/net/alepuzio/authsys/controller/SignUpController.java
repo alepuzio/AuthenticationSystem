@@ -9,15 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class SignUpController {
-	
+
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signup(@RequestParam String number) {
 		ModelAndView mav = new ModelAndView();
-		logger.info(String.format(">signup(%s)",number));
-		return mav;	
-		}
-
+		logger.info(String.format(">signup(%s)", number));
+		return mav;
+	}
 
 }
