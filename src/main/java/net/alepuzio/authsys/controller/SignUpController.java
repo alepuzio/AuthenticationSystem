@@ -2,6 +2,7 @@ package net.alepuzio.authsys.controller;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,29 +26,35 @@ public class SignUpController {
 
 	@RequestMapping(value = "/record", method = RequestMethod.POST)
 	public ModelAndView record(@RequestParam Map<String,String >body) {
-		Generic userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
-		logger.info(String.format(">record(%s)", userToRecord.getAnagraphicData().toString()));
+		logger.info(String.format(">record(%s)", body));
 		ModelAndView mav = new ModelAndView();
 		
-		/**
-		 * TODO verify it's not recorded already
-		 * */
-		/**
-		 * TODO verify the param are valid
-		 * */
-		/**
-		 * TODO record in mariadb
-		 * */
 		try {
+			validation(body);
+			Generic userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
 			Generic persistent = service.save(userToRecord);
-			mav.addObject("persistent", persistent);
-			mav.setViewName("signup-ok");
+			mav.addObject("username", persistent.getSecurityData().getUsername());
+			
+			mav.addObject("name", persistent.getAnagraphicData().getName());
+			mav.addObject("surname", persistent.getAnagraphicData().getSurname());
+			mav.addObject("vatin", persistent.getAnagraphicData().getVatIn());
+			mav.setViewName("home");
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.error("exception:"+e.getMessage());
 			mav.addObject("errors", e.getMessage());
 			mav.setViewName("signup");
 		}
 		return mav;
+	}
+
+	private void validation(Map<String, String> body) throws Exception {
+		final String password = body.get("password");
+		final String repeatPassword = body.get("repeatedPassword");
+		if(StringUtils.isEmpty(password) ||StringUtils.isEmpty(repeatPassword)){
+			throw new Exception("Please fill both the password's fields");
+		}  else if ( !password.trim().equals(repeatPassword.trim()) ){
+			throw new Exception(String.format("The password [%s] and [%s] don't match", password, repeatPassword));
+		}
 	}
 
 }

@@ -25,11 +25,10 @@ public class JDBCRepository implements UserRepository {
 	private MariaDBConfig mariaDBConfig;
 
 	@Override
-	public Generic save(Generic user1) throws Exception {
-		logger.info("jdbc.save("+user1+")");
+	public Generic save(Generic userToSave) throws Exception {
+		logger.info("jdbc.save("+userToSave+")");
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		Generic result = null;
 		try {
 			Class.forName(this.mariaDBConfig.getDriver());
 			conn = DriverManager.getConnection(mariaDBConfig.getUrl(), mariaDBConfig.getUsername(),
@@ -38,26 +37,22 @@ public class JDBCRepository implements UserRepository {
 			String sql = "INSERT INTO USER(NAME, SURNAME, VATIN, USERNAME, PASSWORD) VALUES(?,?,?,?,?)";
 			stmt = conn.prepareStatement(sql);
 
-			stmt.setString(1, user1.getAnagraphicData().getName());
-			stmt.setString(2, user1.getAnagraphicData().getSurname());
-			stmt.setString(3, user1.getAnagraphicData().getVatIn());
+			stmt.setString(1, userToSave.getAnagraphicData().getName());
+			stmt.setString(2, userToSave.getAnagraphicData().getSurname());
+			stmt.setString(3, userToSave.getAnagraphicData().getVatIn());
 
-			stmt.setString(4, user1.getSecurityData().getUsername());
-			stmt.setString(5, user1.getSecurityData().getPassword().crypto());
-			if (stmt.execute()) {
-				// result.setCryptedPassword(user1.getSecurityData().getPassword().crypto());
-				// result.setName(user1.getAnagraphicData().getName());
-				// result.setVatin(user1.getAnagraphicData().getVatIn());
-				// result.setUsername(user1.getSecurityData().getUsername());
-				// result.setSurname(user1.getAnagraphicData().getSurname());
-			}
+			stmt.setString(4, userToSave.getSecurityData().getUsername());
+			stmt.setString(5, userToSave.getSecurityData().getPassword().crypto());
+			final int numberRows = stmt.executeUpdate();
+			if (1!= numberRows){
+				throw new Exception(String.format("Insert with [%d] rows", numberRows));
+			}				
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
-			// finally block used to close resources
 			close(conn, stmt);
 		}
-		return result;
+		return userToSave;
 	}
 
 	private void close(Connection conn, PreparedStatement stmt) throws SQLException {

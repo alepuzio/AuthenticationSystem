@@ -8,7 +8,7 @@ import net.alepuzio.authsys.domain.MandatoryData;
 import net.alepuzio.authsys.domain.user.elementary.password.Password;
 
 public class SecurityData implements MandatoryData {
-	
+
 	private String username = null;
 	private Password password = null;
 	
@@ -35,6 +35,11 @@ public class SecurityData implements MandatoryData {
 				&& StringUtils.isNotEmpty(this.password.getValue()) 
 				;
 	
+	}
+	
+	@Override
+	public String toString() {
+		return "SecurityData [username=" + username + ", password=" + password + "]";
 	}
 
 	
