@@ -1,4 +1,6 @@
-package net.alepuzio.authsys.domain.data;
+package net.alepuzio.authsys.domain.user.elementary;
+
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,6 +16,15 @@ public class AnagraphicData implements MandatoryData {
 		this.name = name;
 		this.surname = surname;
 		this.vatIn = vatIn;
+	}
+
+	public AnagraphicData(Map<String, String> body) {
+		this(body.get("name"),body.get("surname"), body.get("vatIn"));
+	}
+
+	@Override
+	public String toString() {
+		return "AnagraphicData [name=" + name + ", surname=" + surname + ", vatIn=" + vatIn + "]";
 	}
 	public String getName() {
 		return name;

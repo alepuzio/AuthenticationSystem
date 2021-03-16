@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Sign In</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+	<h1>Sign In</h1>
+	<p>
+		Please fill the form to signin. <br />
+		If you're not recorded, yo ucan signup <a href="./signup.html">here</a>.
+	</p>
+	<form action="/signin" method="get">
+		<p>
+			<label for="username">
+				<b>Username</b>
+				<input type="text" placeholder="Enter Username" name="username" required size="20"  >
+			</label> <br>
+			<label for="password">
+				<b>Password</b>
+				<input placeholder="Enter Password" name="password" required size="20" type="password">
+			</label><br> 
+		</p>
+
+		<div class="clearfix">
+			<button type="button" class="cancelbtn">Cancel</button><!--TODO javascript to blank the fields -->
+			<button type="submit" class="signupbtn">Sign In</button>
+		</div>
+	</form>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package net.alepuzio.authsys.domain.user;
+package net.alepuzio.authsys.domain.user.elementary.vatin;
 
 import net.alepuzio.authsys.domain.User;
 

@@ -1,20 +1,19 @@
 package net.alepuzio.authsys.domain.user;
 
-import net.alepuzio.authsys.domain.MandatoryData;
 import net.alepuzio.authsys.domain.User;
-import net.alepuzio.authsys.domain.data.AnagraphicData;
-import net.alepuzio.authsys.domain.data.SecurityData;
+import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
+import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 
 public class Generic implements User {
 
-	private MandatoryData anagraphicData = null;
-	private MandatoryData securityData = null;
+	private AnagraphicData anagraphicData = null;
+	private SecurityData securityData = null;
 
-	public MandatoryData getSecurityData() {
+	public SecurityData getSecurityData() {
 		return securityData;
 	}
 
-	public MandatoryData getAnagraphicData() {
+	public AnagraphicData getAnagraphicData() {
 		return anagraphicData;
 	}
 

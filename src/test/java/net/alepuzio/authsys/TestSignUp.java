@@ -11,10 +11,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import net.alepuzio.authsys.domain.User;
-import net.alepuzio.authsys.domain.data.AnagraphicData;
-import net.alepuzio.authsys.domain.data.SecurityData;
 import net.alepuzio.authsys.domain.user.Generic;
-import net.alepuzio.authsys.domain.user.Italian;
+import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
+import net.alepuzio.authsys.domain.user.elementary.SecurityData;
+import net.alepuzio.authsys.domain.user.elementary.vatin.Italian;
 
 public class TestSignUp {
 
