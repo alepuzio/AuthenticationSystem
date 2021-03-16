@@ -39,7 +39,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setViewClass(JstlView.class);
 		resolver.setPrefix("/templates/");
-		resolver.setSuffix(".html");
+		resolver.setSuffix(".jsp");
 		logger.info("<getInternalResourceViewResolver");
 		return resolver;
 	}

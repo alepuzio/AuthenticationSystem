@@ -23,6 +23,10 @@ public class Generic implements User {
 		this.securityData = securityData;
 	}
 
+	public Generic( SecurityData securityData) {
+		this(null,	securityData);	
+	}
+	
 	public boolean recorded(){
 		return false;
 	}

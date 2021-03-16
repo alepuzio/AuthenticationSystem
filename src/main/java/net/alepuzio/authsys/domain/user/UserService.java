@@ -1,22 +1,22 @@
 package net.alepuzio.authsys.domain.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.domain.user.persistence.JDBCRepository;
-import net.alepuzio.authsys.domain.user.persistence.Persistent;
 
+@Component
 public class UserService {
 
 	@Autowired
-	private JDBCRepository jdbcRepository = null;
+	private JDBCRepository jdbcRepository;
 	
-	
-	public Persistent save(Generic genericToSave) throws Exception{
+	public Generic save(Generic genericToSave) throws Exception{
 		return jdbcRepository.save(genericToSave);
 	}
 	
-	public Persistent user(Generic genericToRead) throws Exception{
-		return jdbcRepository.save(genericToRead);
+	public Generic recordedData(Generic genericToRead) throws Exception {
+		return jdbcRepository.user(genericToRead);
 	}
 
 }

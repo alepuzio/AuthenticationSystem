@@ -1,7 +1,9 @@
 package net.alepuzio.authsys.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MariaDBConfig {
 	
 	@Value( "${spring.datasource.url}" )

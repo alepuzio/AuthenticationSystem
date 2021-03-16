@@ -3,6 +3,7 @@ package net.alepuzio.authsys.controller;
 import java.util.Map;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,18 +14,21 @@ import net.alepuzio.authsys.domain.user.Generic;
 import net.alepuzio.authsys.domain.user.UserService;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
-import net.alepuzio.authsys.domain.user.persistence.Persistent;
 
 @Controller
 public class SignUpController {
+
+	@Autowired
+	private UserService service;
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "/record", method = RequestMethod.POST)
 	public ModelAndView record(@RequestParam Map<String,String >body) {
-		ModelAndView mav = new ModelAndView();
 		Generic userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
 		logger.info(String.format(">record(%s)", userToRecord.getAnagraphicData().toString()));
+		ModelAndView mav = new ModelAndView();
+		
 		/**
 		 * TODO verify it's not recorded already
 		 * */
@@ -34,20 +38,15 @@ public class SignUpController {
 		/**
 		 * TODO record in mariadb
 		 * */
-		UserService service = new UserService();
 		try {
-			Persistent persistent = service.save(userToRecord);
+			Generic persistent = service.save(userToRecord);
+			mav.addObject("persistent", persistent);
+			mav.setViewName("signup-ok");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			
+			mav.addObject("errors", e.getMessage());
+			mav.setViewName("signup");
 		}
-		/*Persistent persistent = new Persistent();
-		persistent.setName(userToRecord.getAnagraphicData().getName());
-		persistent.setSurname(userToRecord.getAnagraphicData().getSurname());
-		persistent.setVatin(userToRecord.getAnagraphicData().getVatIn());
-		persistent.setUsername(userToRecord.getSecurityData().getUsername());
-		persistent.setCryptedPassword(userToRecord.getSecurityData().getPassword().crypto());
-		*/
 		return mav;
 	}
 

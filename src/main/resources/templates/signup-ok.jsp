@@ -9,7 +9,7 @@
 <body>
 	<h1>Sign Up</h1>
 	<p>
-		Registrazione ok <br />
+		Successfull Signup <br />
 		</p>
 		
 </body>

@@ -19,7 +19,7 @@ public class AnagraphicData implements MandatoryData {
 	}
 
 	public AnagraphicData(Map<String, String> body) {
-		this(body.get("name"),body.get("surname"), body.get("vatIn"));
+		this(body.get("name"),body.get("surname"), body.get("vatin"));
 	}
 
 	@Override

@@ -1,8 +1,9 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <html>
 <head>
 <title>Sign Up</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/jsp; charset=UTF-8" />
 <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
@@ -15,27 +16,27 @@
 		<p>
 			<label for="name">
 			<b>Name</b> 
-			<input type="text"	placeholder="Enter Name" name="name" required size="20"><br>
-			</label> 
+			<input type="text"	placeholder="Enter Name" name="name" required size="20" value="alessandro">
+			</label> <br>
 			<label for="surname">
 			<b>Surname</b>
-			<input type="text" placeholder="Enter Surname" name="username" required size="20">
+			<input type="text" placeholder="Enter Surname" name="surname" required size="20" value="puzielli">
 			</label><br>
 			<label for="vatin">
 			<b>VATIn</b>
-			<input type="text" placeholder="Enter VATIn" name="vatin" required size="20"  >
+			<input type="text" placeholder="Enter VATIn" name="vatin" required size="20"  value="PZLSSNN">
 			</label> <br>
 			<label for="username">
 				<b>Username</b>
-				<input type="text" placeholder="Enter Username" name="username" required size="20"  >
+				<input type="text" placeholder="Enter Username" name="username" required size="20"  value="alex">
 			</label> <br>
 			<label for="password">
 				<b>Password</b>
-				<input placeholder="Enter Password" name="password" required size="20" type="password">
+				<input placeholder="Enter Password" name="password" required size="20" type="password" value="io">
 			</label><br> 
 			<label for="repeatpassword">
 				<b>Repeat Password</b>
-				<input placeholder="Enter Password" name="repeatedPassword" required size="20" type="password">
+				<input placeholder="Enter Password" name="repeatedPassword" required size="20" type="password" value="io">
 			</label><br>
 		</p>
 		<p>
