@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "    http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Sign In</title>
 <meta http-equiv="Content-Type" content="text/jsp; charset=UTF-8" />
@@ -16,11 +15,11 @@
 		<p>
 			<label for="username">
 				<b>Username</b>
-				<input type="text" placeholder="Enter Username" name="username"  size="20"  ><!-- todo required -->
+				<input  name="username" placeholder="Enter Username" required size="20" type="text" >
 			</label> <br>
 			<label for="password">
 				<b>Password</b>
-				<input placeholder="Enter Password" name="password"  size="20" type="password"><!-- todo required -->
+				<input  name="password"  placeholder="Enter Password" required size="20" type="password" >
 			</label><br> 
 		</p>
 		
@@ -28,11 +27,11 @@
 			<button type="button" class="cancelbtn">Cancel</button><!--TODO javascript to blank the fields -->
 			<button type="submit" class="signupbtn">Sign In</button>
 		</div>
-		
-		<div id="errors" >
-		<p>
-		WARNING: your signin failed for : th:text="${errors}".
-		</p>
+
+		<div id="error" th:if="${errors != null}">
+			<p class="errors">
+				WARNING: your signin failed for <span style="font-style:italic" th:text="${errors}">.</span>
+			</p>
 		</div>
 	</form>
 

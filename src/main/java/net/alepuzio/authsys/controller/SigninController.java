@@ -39,6 +39,9 @@ public class SigninController {
 			try {
 				found = service.recordedData(userToRead);
 				mav.addObject("name", found.getAnagraphicData().getName());
+				mav.addObject("surname", found.getAnagraphicData().getSurname());
+				mav.addObject("vatin", found.getAnagraphicData().getVatIn());
+				mav.addObject("username", found.getSecurityData().getUsername());
 			} catch (Exception e) {
 				error = e.getMessage();
 				logger.error("errors: "+error);

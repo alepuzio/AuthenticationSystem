@@ -22,17 +22,18 @@ public class TestUserRepository {
 
 	@Autowired
 	private UserRepository userRepository;
-
-	@Before
-	public void setUp() throws Exception {
-		Generic user1 = new Generic(new AnagraphicData("User", "recorded", "PALSS"),
-				new SecurityData("username", "password"));
-		Generic persistentUser = this.userRepository.save(user1);
-		assertEquals(persistentUser.getAnagraphicData().getName(), user1.getAnagraphicData().getName());
-	}
 	
 	@Test
 	public void testSave() {
-		assertTrue(true);
+		Generic user1 = new Generic(new AnagraphicData("User", "recorded", "PALSS"),
+				new SecurityData("username", "password"));
+		try {
+			Generic  persistentUser = this.userRepository.save(user1);
+			assertEquals(persistentUser.getAnagraphicData().getName(), user1.getAnagraphicData().getName());
+		} catch (Exception e) {
+			assertFalse(true);
+		}
 	}
+	
+
 }

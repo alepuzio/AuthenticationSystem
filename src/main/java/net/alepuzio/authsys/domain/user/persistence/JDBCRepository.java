@@ -48,6 +48,7 @@ public class JDBCRepository implements UserRepository {
 				throw new Exception(String.format("Insert with [%d] rows", numberRows));
 			}				
 		} catch (Exception e) {
+			logger.error("Exception " + e.getMessage());
 			throw e;
 		} finally {
 			close(conn, stmt);
