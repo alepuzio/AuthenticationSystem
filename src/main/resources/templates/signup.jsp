@@ -39,7 +39,7 @@
 			</label><br>
 		</p>
 		<p>
-			By creating an account you agree  <a href="#"style="color: dodgerblue">have more than 18 years</a>.
+			By creating an account you agree to <a href="#"style="color: dodgerblue">have more than 18 years</a>.
 		</p>
 
 		<div class="clearfix">
@@ -47,6 +47,11 @@
 			<button type="submit" class="signupbtn">Sign Up</button>
 		</div>
 	</form>
+		<div id="error" th:if="${errors != null}">
+			<p class="errors">
+				WARNING: there's the error <span style="font-style:italic" th:text="${errors}">.</span>
+			</p>
+		</div>
 
 </body>
 </html>

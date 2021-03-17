@@ -27,11 +27,11 @@
 			<button type="button" class="cancelbtn">Cancel</button><!--TODO javascript to blank the fields -->
 			<button type="submit" class="signupbtn">Sign In</button>
 		</div>
-		
+
 		<div id="error" th:if="${errors != null}">
-		<p class="errors">
-		WARNING: your signin failed for	<span th:text="${errors}">.</span>
-		</p>
+			<p class="errors">
+				WARNING: your signin failed for <span style="font-style:italic" th:text="${errors}">.</span>
+			</p>
 		</div>
 	</form>
 

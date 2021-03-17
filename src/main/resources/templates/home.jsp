@@ -16,5 +16,13 @@
 		</p>
 	</div>
 	
+
+		<div id="error" th:if="${errors != null}">
+			<p class="errors">
+				WARNING: there's the error <span style="font-style:italic" th:text="${errors}">.</span>
+			</p>
+		</div>
+	
+	
 </body>
 </html>
