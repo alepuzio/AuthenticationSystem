@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Sign Up</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

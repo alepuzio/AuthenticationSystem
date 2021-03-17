@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "    http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Home</title>
 <meta http-equiv="Content-Type" content="text/jsp; charset=UTF-8" />
@@ -9,11 +7,14 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 	<h1>Home</h1>
+	<div>
 	<p>
-		Hello {username}! <br />
-		Thank you to sign in: you're {name} {surname} with VAT IN {vatin}.<br/>
+		Hello <span th:text="${username}">. </span> <br />
+		Thank you to sign in: you' re <span th:text="${name}"></span> <span th:text="${surname}"> </span> with VAT IN <span th:text="${vatin}"> </span>.
+		<br/>
 		You can <a href="/">logout</a>.
-	</p>
+		</p>
+	</div>
 	
 </body>
 </html>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-	<h1>Sign In in Templates</h1>
+	<h1>Sign In</h1>
 	<p>
 		Please fill the form to signin. <br />
 		If you're not recorded, you can signup <a href="signup">here</a>.
