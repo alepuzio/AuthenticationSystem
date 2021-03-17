@@ -1,5 +1,7 @@
 package net.alepuzio.authsys.domain.user.elementary;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +22,9 @@ public class SecurityData implements MandatoryData {
 
 	public SecurityData(Map<String, String> body) {
 		this(body.get("username"),body.get("password"));
+	}
+	public SecurityData(ResultSet rs) throws SQLException {
+		this( rs.getString("USERNAME"),rs.getString("PASSWORD"));
 	}
 
 	public String getUsername() {

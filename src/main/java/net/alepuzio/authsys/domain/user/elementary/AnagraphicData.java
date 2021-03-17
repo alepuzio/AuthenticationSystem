@@ -1,5 +1,7 @@
 package net.alepuzio.authsys.domain.user.elementary;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +22,10 @@ public class AnagraphicData implements MandatoryData {
 
 	public AnagraphicData(Map<String, String> body) {
 		this(body.get("name"),body.get("surname"), body.get("vatin"));
+	}
+
+	public AnagraphicData(ResultSet rs) throws SQLException {
+		this(rs.getString("NAME"),rs.getString("SURNAME"), rs.getString("VATIN"));
 	}
 
 	@Override
