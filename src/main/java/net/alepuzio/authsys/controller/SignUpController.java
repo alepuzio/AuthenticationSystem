@@ -1,5 +1,6 @@
 package net.alepuzio.authsys.controller;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -28,10 +29,10 @@ public class SignUpController {
 	public ModelAndView record(@RequestParam Map<String,String >body) {
 		logger.info(String.format(">record(%s)", body));
 		ModelAndView mav = new ModelAndView();
-		
+		Generic userToRecord = null;
 		try {
 			validation(body);
-			Generic userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
+			userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
 			Generic persistent = service.save(userToRecord);
 			mav.addObject("username", persistent.getSecurityData().getUsername());
 			
@@ -39,6 +40,15 @@ public class SignUpController {
 			mav.addObject("surname", persistent.getAnagraphicData().getSurname());
 			mav.addObject("vatin", persistent.getAnagraphicData().getVatIn());
 			mav.setViewName("home");
+		}catch (SQLException sqlException){
+			String msg = null;
+			if(sqlException.getMessage().contains("Duplicate entry")){
+				msg = String.format("The VAT IN of the user [%s] is already recorded, you can't record more than one user",userToRecord.getSecurityData().getUsername());
+			}else{
+				msg = sqlException.getMessage();
+			}
+			mav.addObject("errors", msg);
+			mav.setViewName("signup");
 		} catch (Exception e) {
 			logger.error("exception:"+e.getMessage());
 			mav.addObject("errors", e.getMessage());
