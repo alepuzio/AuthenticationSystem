@@ -41,11 +41,12 @@ public class SignUpController {
 			mav.addObject("surname", persistent.getAnagraphicData().getSurname());
 			mav.addObject("vatin", persistent.getAnagraphicData().getVatIn());
 			mav.setViewName("home");
-		}catch (SQLException sqlException){
+			logger.info(String.format("<record(%s)", new TrippleDes().encrypt(body.toString())));
+		} catch (SQLException sqlException){
 			String msg = null;
-			if(sqlException.getMessage().contains("Duplicate entry")){
+			if ( sqlException.getMessage().contains("Duplicate entry") ) {
 				msg = String.format("The VAT IN of the user [%s] is already recorded, you can't record more than one user",userToRecord.getSecurityData().getUsername());
-			}else{
+			} else {
 				msg = sqlException.getMessage();
 			}
 			new MyException(sqlException,logger).error();

@@ -24,11 +24,11 @@ public class TestUserRepository {
 	
 	@Test
 	public void testSave() {
-		Generic user1 = new Generic(new AnagraphicData("User", "recorded", "PALSS"),
+		Generic user = new Generic(new AnagraphicData("User", "recorded", "PALSS"),
 				new SecurityData("username", "password"));
 		try {
-			Generic  persistentUser = this.userRepository.save(user1);
-			assertEquals(persistentUser.getAnagraphicData().getName(), user1.getAnagraphicData().getName());
+			Generic  persistentUser = this.userRepository.save(user);
+			assertEquals(persistentUser.getAnagraphicData().getName(), user.getAnagraphicData().getName());
 		} catch (Exception e) {
 			assertFalse(true);
 		}

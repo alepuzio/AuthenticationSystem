@@ -27,10 +27,10 @@ public class JDBCRepository implements UserRepository {
 	
 	@Override
 	public Generic save(Generic userToSave) throws Exception {
-		logger.info("jdbc.save("+userToSave+")");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
+			logger.info(String.format(">save(%s)" ,new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatIn()) ));
 			conn = connectionFactory.instance();
 			String sql = "INSERT INTO USER(NAME, SURNAME, VATIN, USERNAME, PASSWORD) VALUES(?,?,?,?,?)";
 			stmt = conn.prepareStatement(sql);
@@ -45,6 +45,7 @@ public class JDBCRepository implements UserRepository {
 			if (1!= numberRows){
 				throw new Exception(String.format("Insert with [%d] rows", numberRows));
 			}				
+			logger.info(String.format("<save(%s)" ,new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatIn()) ));
 		} catch (Exception e) {
 			new MyException(e,logger).error().exception();;
 		} finally {
@@ -64,7 +65,7 @@ public class JDBCRepository implements UserRepository {
 
 	@Override
 	public Generic user(Generic userToFind) throws Exception {
-		logger.info(String.format(">user(%s)", userToFind));
+		logger.info(String.format(">user(%s)" ,new TrippleDes().encrypt(userToFind.getSecurityData().getUsername())));
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		Generic result = null;
@@ -82,6 +83,7 @@ public class JDBCRepository implements UserRepository {
 			if (rs.next()){
 				throw new Exception(String.format("Double record for user [%s] ",new TrippleDes().encrypt(userToFind.getSecurityData().getUsername())));
 			}
+			logger.info(String.format("<user(%s)" ,new TrippleDes().encrypt(userToFind.getSecurityData().getUsername())));
 		} catch (Exception e) {
 			new MyException(e,logger).error().exception();
 		} finally {

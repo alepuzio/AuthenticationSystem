@@ -44,6 +44,8 @@ public class SigninController {
 			mav.addObject("surname", new TrippleDes().decrypt(found.getAnagraphicData().getSurname()));
 			mav.addObject("vatin", new TrippleDes().decrypt(found.getAnagraphicData().getVatIn()));
 			mav.addObject("username", new TrippleDes().decrypt(found.getSecurityData().getUsername()));
+			logger.info(String.format("<signin(%s,%s)", new TrippleDes().encrypt(username),
+					new TrippleDes().encrypt(password)));
 		} catch (Exception e) {
 			error = e.getMessage();
 			logger.error("errors: " + error);
@@ -51,7 +53,6 @@ public class SigninController {
 		}
 		mav.addObject("errors", error);
 		mav.setViewName(viewName);
-		logger.info("<signin");
 		return mav;
 	}
 
