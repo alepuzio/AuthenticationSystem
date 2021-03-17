@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "    http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Sign In</title>
@@ -9,7 +6,7 @@
 <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-	<h1>Sign In</h1>
+	<h1>Sign In in Templates</h1>
 	<p>
 		Please fill the form to signin. <br />
 		If you're not recorded, you can signup <a href="signup">here</a>.
@@ -31,9 +28,9 @@
 			<button type="submit" class="signupbtn">Sign In</button>
 		</div>
 		
-		<div id="errors" >
-		<p>
-		WARNING: your signin failed for th:text="${errors}".
+		<div id="error" th:if="${errors != null}">
+		<p class="errors">
+		WARNING: your signin failed for	<span th:text="${errors}">.</span>
 		</p>
 		</div>
 	</form>
