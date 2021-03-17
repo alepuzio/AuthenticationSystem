@@ -39,7 +39,9 @@
 			</label><br>
 		</p>
 		<p>
-			By creating an account you agree to <a href="#"style="color: dodgerblue">have more than 18 years</a>.
+			By creating an account you agree to <a href="#"style="color: dodgerblue">have more than 18 years</a>.<br/>
+			After the record of your data, you will be automatically signin. <br/>
+			If you want, you can try to signin in the <a href="/">page</a>.<br/>			
 		</p>
 
 		<div class="clearfix">
@@ -49,7 +51,7 @@
 	</form>
 		<div id="error" th:if="${errors != null}">
 			<p class="errors">
-				WARNING: there's the error <span style="font-style:italic" th:text="${errors}">.</span>
+				WARNING: there's the error <span style="font-style: italic" th:text="${errors}">.</span>
 			</p>
 		</div>
 
