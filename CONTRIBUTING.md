@@ -1,6 +1,6 @@
 # CONTRIBUTING
 
- - Download the project as described in [README.md](http://www.github.com/alepuzio/MMS/README.md);
+ - Download the project as described in [README.md](http://www.github.com/alepuzio/authsys/README.md);
  - If the code is yet downloaded, update the project using the command _git pull_;
  - Run the code to ensure that the pushed code works with no error;
  - Study the actual code;

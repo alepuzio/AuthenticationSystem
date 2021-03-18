@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>net.alepuzio</groupId>
 	<artifactId>authsys</artifactId>
-	<version>1.0.1</version><!-- semantic versioning -->
+	<version>2.0.0</version><!-- semantic versioning -->
 	<packaging>jar</packaging>
 	<name>authentication-system</name>
 	<description>Authentication system in first layer (username and
@@ -105,6 +105,14 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.11</version>
+</dependency>
+	
+	
 	</dependencies>
 
 	<build>

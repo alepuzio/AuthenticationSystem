@@ -9,8 +9,11 @@
 	<h1>Home</h1>
 	<div>
 	<p>
-		Hello <span th:text="${username}">. </span> <br />
-		Thank you to sign in: you' re <span th:text="${name}"></span> <span th:text="${surname}"> </span> with VAT IN <span th:text="${vatin}"> </span>.
+		Hello <span style="font-style: italic" th:text="${username}">. </span> <br />
+		Thank you to sign in: you' re 
+		<span style="font-style: italic" th:text="${name}"></span> 
+		<span style="font-style: italic" th:text="${surname}"> </span> 
+		with VAT IN <span style="font-style: italic" th:text="${vatin}"> </span>.
 		<br/>
 		You can <a href="/">logout</a>.
 		</p>
@@ -19,7 +22,7 @@
 
 		<div id="error" th:if="${errors != null}">
 			<p class="errors">
-				WARNING: there's the error <span style="font-style:italic" th:text="${errors}">.</span>
+				WARNING: there's the error <span style="font-style: italic" th:text="${errors}">.</span>
 			</p>
 		</div>
 	

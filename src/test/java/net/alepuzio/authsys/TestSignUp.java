@@ -22,7 +22,7 @@ public class TestSignUp {
 	public void testSignUpNullValues() {
 		String name = null;
 		String surname = null;
-		String vatIn = null;// TODO codice fiscale in inglese
+		String vatIn = null;
 		String username = null;
 		String password = null;
 		User user = new Generic(new AnagraphicData(name, surname, vatIn), new SecurityData(username, password));
@@ -32,7 +32,7 @@ public class TestSignUp {
 	public void testSignUpEmptyValues() {
 		String name = "    ";
 		String surname = "    ";
-		String vatIn = "    ";// TODO codice fiscale in inglese
+		String vatIn = "    ";
 		String username = "    ";
 		String password = "    ";
 		User user = new Generic(new AnagraphicData(name, surname, vatIn), new SecurityData(username, password));
@@ -55,7 +55,7 @@ public class TestSignUp {
 	}
 
 	@Test
-	@Ignore(value = "read TODO in method")
+	@Ignore(value = "postponed")
 	public void testSignUpInvalidItalianVatIN() {
 		String name = "alessandro";
 		String surname = "puzielli";

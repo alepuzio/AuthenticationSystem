@@ -14,6 +14,7 @@ Project in Spring Boot and MVC to sign in and sign up an user using the authenti
 * Java 1.8 or more
 * IDE or text editor
 * Maven 
+* MariaDB database
 
 ### Installing
 
@@ -27,19 +28,25 @@ Project in Spring Boot and MVC to sign in and sign up an user using the authenti
 
 ### Break down into to end to end tests
 
-[] TODO 
+
+* Go to _http://localhost:8080/_;
+* Appear the signin page: you can signin an existing user (alex/io);
+* Click the _submit_ button. You will see the page of the correct signin;
+* Go back
+* Appear the signin page: click the link to _signup_ page;
+* Fill in the fom and click the _signup_ button. You will see the page of the correct signin;
+* Verify in database the sensitive encrypt data of the users
+* Verify in console and file logs the sensitive encrypt data of the users
+
 
 ### Coding styles sheets
 
 * Please read the file [CONTRIBUTING.md](http://github.com/alepuzio/authentication-system/CONTRIBUTING.md)
 
 ## Deployment
- 
-* Run the command _mvn spring-boot:run -X -e_ or _java -jar target/authentication-system.jar_ ;
-* Go to _http://localhost:8080/_;
-* Write the number (max 20 digits) in the inptu text;
-* Click the _submit_ button;
-* The application will show you the list of the images in the archive;
+* Run the database script in _src/main/resources/_ in MariaDB in correct order. 
+* You have the new database, 1 table and 1 recorded user
+* Run the command _mvn spring-boot:run -X -e_ or _java -jar target/auth-sys.jar_ ;
 
 ### Built with:
 

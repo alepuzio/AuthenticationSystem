@@ -13,11 +13,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 /**
- * @overview: it manages the configuation of our application
+ * @overview: it manages the configuration of our application
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "net.alepuzio.mss" })
+@ComponentScan({ "net.alepuzio.authsys" })
 public class WebApplicationContextConfig implements WebMvcConfigurer {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
@@ -30,8 +30,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
 	}
 
 	/**
-	 * Bean that configures the Resolver cerca le pagine in jsp nella cartella
-	 * WEB-INF/view
+	 * Bean that configures the Resolver: it looks or the page in /templates/ dir
 	 */
 	@Bean
 	public InternalResourceViewResolver getInternalResourceViewResolver() {

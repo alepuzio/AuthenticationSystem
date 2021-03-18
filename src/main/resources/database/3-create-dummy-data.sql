@@ -1,8 +1,12 @@
-insert into user(`name`,`surname`,`vatin`,`username`,`password`) values(
-"Mario","Rossi","RSSFBA80A01F205I","mariorossi","password"
-);
-insert into user(`name`,`surname`,`vatin`,`username`,`password`) values(
-"Luisa","Pallavicini","PLLLSU80A41F205E","luisalla","password"
-);
+/*
+ * the decrypted data are
+ * "alessandro"
+ * "puzielli"
+ * "PZLSSNN"
+ * "alex"
+ * "io"
+ * */
+INSERT INTO `user` (`name`, `surname`, `vatin`, `username`, `password`) VALUES
+	('X3uX/Zv+ic759LEjXLp8Lg==', '8LDGA+D4NISJJSpQl9fUJg==', '55rRxPs69z0=', 'wQNoUUT6TjI=', 'UBWYNFPNYYY=');
 
 commit;
