@@ -15,6 +15,9 @@ import net.alepuzio.authsys.domain.user.Generic;
 import net.alepuzio.authsys.domain.user.UserRepository;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
+/**
+ * @FEATURE_ORM@ change the JDBC component using Spring Data as ORM
+ */
 
 @Component
 public class JDBCRepository implements UserRepository {

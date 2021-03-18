@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.config.MariaDBConfig;
 import net.alepuzio.authsys.crypto.exception.MyException;
-
+/**
+ *  @FEATURE_ORM@ change the JDBC component using Spring Data as ORM
+ */
 @Component
 public class ConnectionFactory {
 
