@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>net.alepuzio</groupId>
 	<artifactId>authsys</artifactId>
-	<version>1.0.1</version><!-- semantic versioning -->
+	<version>2.0.0</version><!-- semantic versioning -->
 	<packaging>jar</packaging>
 	<name>authentication-system</name>
 	<description>Authentication system in first layer (username and
