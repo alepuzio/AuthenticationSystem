@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.config.MariaDBConfig;
-import net.alepuzio.authsys.crypto.TrippleDes;
 import net.alepuzio.authsys.crypto.exception.MyException;
 
 @Component
@@ -23,10 +22,9 @@ public class ConnectionFactory {
 		Connection result = null;
 		try {
 			Class.forName(this.mariaDBConfig.getDriver());
-			/*TODO correggere errore javax.crypto.IllegalBlockSizeException: Input length must be multiple of 16 when decrypting with padded cipher*/
-			result = DriverManager.getConnection(/* new TrippleDes().decrypt( */this.mariaDBConfig.getUrl()/* ) */,
-					/* new TrippleDes().decrypt( */this.mariaDBConfig.getUsername()/* ) */,
-					/* new TrippleDes().decrypt( */this.mariaDBConfig.getPassword())/* ) */;
+			result = DriverManager.getConnection( this.mariaDBConfig.getUrl() ,
+					 this.mariaDBConfig.getUsername() ,
+					 this.mariaDBConfig.getPassword()) ;
 			logger.debug("Connected database successfully...");
 		} catch (Exception e) {
 			new MyException(e, logger).error().exception();
