@@ -2,6 +2,9 @@ package net.alepuzio.authsys.domain.user.elementary.vatin;
 
 import net.alepuzio.authsys.domain.User;
 
+/***
+ * @overview this class is a Decorator of the user: it add some rules for italian users
+ * */
 public class Italian implements User {
 
 	private User origin = null;
@@ -11,7 +14,8 @@ public class Italian implements User {
 	}
 
 	@Override
-	/**@return true if the origin.data() return true and if the vatIn follow the rules of Italian "codice fiscale"
+	/**
+	 * @return true if the origin.data() return true and if the vatIn follow the rules of Italian "codice fiscale"
 	 *  **/
 	public boolean valid() {
 		boolean result = false;

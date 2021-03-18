@@ -12,6 +12,9 @@ import net.alepuzio.authsys.crypto.TrippleDes;
 import net.alepuzio.authsys.domain.user.Generic;
 import net.alepuzio.authsys.domain.user.UserService;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
+/**
+ * @return ModelAndView of the record of the data of a new user
+ * */
 
 @Controller
 public class SigninController {
@@ -20,7 +23,9 @@ public class SigninController {
 	private UserService service;
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
-
+	/**
+	 * @return forward to the initial page
+	 * */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
 		logger.info("In the application...forward to signin page");
@@ -29,6 +34,9 @@ public class SigninController {
 		return mav;
 	}
 
+	/**
+	 * @return ModelAndView of the record of the data of an exiting user
+	 * */
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public ModelAndView signin(@RequestParam String username, @RequestParam String password) {
 		Generic found = null;
@@ -55,7 +63,10 @@ public class SigninController {
 		mav.setViewName(viewName);
 		return mav;
 	}
-
+	
+	/**
+	 * @return forward to the signup page 
+	 * */
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signup() {
 		logger.info(">signup");

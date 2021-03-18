@@ -8,7 +8,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import net.alepuzio.authsys.domain.MandatoryData;
 import net.alepuzio.authsys.domain.user.elementary.password.Password;
-
+/**
+ * @overview: this class contains the user data about security 
+ * */
 public class SecurityData implements MandatoryData {
 
 	private String username = null;
@@ -34,12 +36,14 @@ public class SecurityData implements MandatoryData {
 		return password;
 	}
 
+	/**
+	 * @return true if username and password are both not null and not empty
+	 * */
 	@Override
 	public boolean valid() {
 		return StringUtils.isNotEmpty(this.username)
 				&& StringUtils.isNotEmpty(this.password.getValue()) 
 				;
-	
 	}
 	
 	@Override
