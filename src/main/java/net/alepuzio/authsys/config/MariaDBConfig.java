@@ -2,7 +2,9 @@ package net.alepuzio.authsys.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
+/**
+ * @overview: this class incapsulate the connection data to the database
+ * */
 @Component
 public class MariaDBConfig {
 	
@@ -30,9 +32,6 @@ public class MariaDBConfig {
 	public String getDriver() {
 		return driver;
 	}
-	
-	
-	
-	
+
 
 }

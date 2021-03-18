@@ -3,7 +3,9 @@ package net.alepuzio.authsys.domain.user;
 import net.alepuzio.authsys.domain.User;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
-
+/**
+ * @overview: this class represent a generic user 
+ * */
 public class Generic implements User {
 
 	@Override

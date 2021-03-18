@@ -19,6 +19,9 @@ import net.alepuzio.authsys.domain.user.UserService;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 
+/**
+ * @overview: class the manage the signup/registration of a new user
+ * */
 @Controller
 public class SignUpController {
 
@@ -27,6 +30,9 @@ public class SignUpController {
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
+	/**
+	 * @return ModelAndView of the record of the data of a new user
+	 * */
 	@RequestMapping(value = "/record", method = RequestMethod.POST)
 	public ModelAndView record(@RequestParam Map<String,String >body) {
 		ModelAndView mav = new ModelAndView();
@@ -59,7 +65,9 @@ public class SignUpController {
 		}
 		return mav;
 	}
-
+	/**
+	 * @overview: this method controls the data
+	 * */
 	private void validation(Map<String, String> body) throws Exception {
 		final String password = body.get("password");
 		final String repeatPassword = body.get("repeatedPassword");

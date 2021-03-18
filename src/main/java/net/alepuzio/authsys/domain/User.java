@@ -1,5 +1,8 @@
 package net.alepuzio.authsys.domain;
 
+/**
+ * @overview: this class shows the behaviour of a general user
+ * */
 public interface User {
 	
 	/**

@@ -1,11 +1,14 @@
 package net.alepuzio.authsys.crypto.exception;
 
 import org.apache.log4j.Logger;
-
+/**
+ * @overview: this class concentrate the logic of logging and throw Exception
+ * */
 public class MyException {
 
 	private Exception e;
-	private Logger logger ;
+	private Logger logger;
+	
 	public MyException(Exception newException,  Logger newLogger) {
 		super();
 		this.e = newException;

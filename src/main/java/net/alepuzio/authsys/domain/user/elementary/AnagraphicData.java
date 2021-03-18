@@ -7,7 +7,9 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 import net.alepuzio.authsys.domain.MandatoryData;
-
+/**
+ * @overview: this class represent the anagraphic data of an user
+ * */
 public class AnagraphicData implements MandatoryData {
 	private String name = null;
 	private String surname = null;

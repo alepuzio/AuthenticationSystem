@@ -11,6 +11,9 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+/**
+ * @overview: this class represent the configuration of the Spring Boot
+ * */
 @Controller
 public class DispacherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	private TemplateEngine templateEngine;
@@ -49,9 +52,9 @@ public class DispacherServletInitializer extends AbstractAnnotationConfigDispatc
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(WebApplicationContextConfig.class);
 		// Create and register the DispatcherServlet
-		ServletRegistration.Dynamic registration = servletContext.addServlet("mms", new DispatcherServlet(context));
+		ServletRegistration.Dynamic registration = servletContext.addServlet("authsys", new DispatcherServlet(context));
 		registration.setLoadOnStartup(1);
-		registration.addMapping("/mms/*");
+		registration.addMapping("/authsys/*");
 
 		this.templateEngine = new TemplateEngine();
 		this.templateEngine.setTemplateResolver(templateResolver(servletContext));

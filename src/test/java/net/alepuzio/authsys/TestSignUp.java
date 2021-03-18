@@ -55,7 +55,7 @@ public class TestSignUp {
 	}
 
 	@Test
-	@Ignore(value = "read TODO in method")
+	@Ignore(value = "postponed")
 	public void testSignUpInvalidItalianVatIN() {
 		String name = "alessandro";
 		String surname = "puzielli";

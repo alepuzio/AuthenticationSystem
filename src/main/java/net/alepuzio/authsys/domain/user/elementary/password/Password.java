@@ -1,4 +1,7 @@
 package net.alepuzio.authsys.domain.user.elementary.password;
+/**
+ * @overview: this class incapsulate the password data
+ * */
 
 public class Password {
 
@@ -13,6 +16,9 @@ public class Password {
 
 	private String value = null;
 	
+	/**
+	 * @deprecated now it's a duplicate of getValue(9, in the future I can incapsulate the encrypt() mechanism
+	 * */
 	public String crypto(){
 		return this.value;
 	}
