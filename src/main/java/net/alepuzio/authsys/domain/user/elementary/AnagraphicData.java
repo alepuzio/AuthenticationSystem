@@ -11,7 +11,7 @@ import net.alepuzio.authsys.domain.MandatoryData;
 public class AnagraphicData implements MandatoryData {
 	private String name = null;
 	private String surname = null;
-	private String vatIn = null;
+	private String vatIn = null;//fiscal code in English
 	
 	public AnagraphicData(String name, String surname, String vatIn) {
 		super();
