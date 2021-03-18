@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "net.alepuzio.mss" })
+@ComponentScan({ "net.alepuzio.authsys" })
 public class WebApplicationContextConfig implements WebMvcConfigurer {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());

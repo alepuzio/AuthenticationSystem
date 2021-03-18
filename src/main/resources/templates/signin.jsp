@@ -30,7 +30,7 @@
 
 		<div id="error" th:if="${errors != null}">
 			<p class="errors">
-				WARNING: your signin failed for <span style="font-style:italic" th:text="${errors}">.</span>
+				WARNING: your signin failed for <span style="font-style: italic" th:text="${errors}">.</span>
 			</p>
 		</div>
 	</form>

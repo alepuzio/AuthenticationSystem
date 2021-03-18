@@ -1,7 +1,9 @@
 package net.alepuzio.authsys.domain.user.persistence;
-import javax.persistence.*;
 
-//@Entity
+
+/**
+ * @FEATURE_ORM@ draft to using Spring Data as ORM
+ */
 public class Persistent {
 //
 //	    @Id
