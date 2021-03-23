@@ -8,11 +8,6 @@ import net.alepuzio.authsys.domain.user.elementary.SecurityData;
  * */
 public class Generic implements User {
 
-	@Override
-	public String toString() {
-		return "Generic [anagraphicData=" + anagraphicData + ", securityData=" + securityData + "]";
-	}
-
 	private AnagraphicData anagraphicData = null;
 	private SecurityData securityData = null;
 
@@ -41,6 +36,11 @@ public class Generic implements User {
 	@Override
 	public boolean valid() {
 		return (this.anagraphicData.valid() && this.securityData.valid());
+	}
+
+	@Override
+	public String toString() {
+		return "Generic [anagraphicData=" + anagraphicData + ", securityData=" + securityData + "]";
 	}
 
 }

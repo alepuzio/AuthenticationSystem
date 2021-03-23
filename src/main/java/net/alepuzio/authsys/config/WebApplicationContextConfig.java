@@ -3,9 +3,11 @@ package net.alepuzio.authsys.config;
 import org.slf4j.Logger;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,7 +19,9 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
+@EnableCaching//allow the Profile mechanism
 @ComponentScan({ "net.alepuzio.authsys" })
+@Profile({"jdbc", "hibernate"})
 public class WebApplicationContextConfig implements WebMvcConfigurer {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());

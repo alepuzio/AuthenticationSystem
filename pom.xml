@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -19,6 +19,34 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<profiles><!-- The configuration of the development profile -->
+		<profile>
+			<id>jdbc</id><!-- The development profile is active by default -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>none</id>
+			<!-- The none profile is active by default, security tip This profile 
+				is not working in any environment in this way I'm forced to explicitate the 
+				profile and I don't have any risk of uncoherent package in the envorinment -->
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>hibernate</id><!-- The configuration of the hibernate profile -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>hibernate</value>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,12 +84,12 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
-<dependency>
-    <groupId>org.apache.taglibs</groupId>
-    <artifactId>taglibs-standard-impl</artifactId>
-    <version>1.2.5</version>
-</dependency>
-		
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -84,35 +112,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- dependency-->
-			<!-- groupId>org.thymeleaf</groupId-->
-			<!-- artifactId>thymeleaf</artifactId-->
-			<!-- version>3.0.11.RELEASE</version -->
-		<!-- /dependency-->
-		<!-- dependency -->
-		<!-- groupId>org.springframework.data</groupId -->
-		<!-- artifactId>spring-data-r2dbc</artifactId -->
-		<!-- /dependency -->
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
 		</dependency>
-<!--dependency-->
-    <!--groupId>org.thymeleaf</groupId-->
-    <!--artifactId>thymeleaf</artifactId-->
-<!--/dependency-->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
-<dependency>
-    <groupId>commons-codec</groupId>
-    <artifactId>commons-codec</artifactId>
-    <version>1.11</version>
-</dependency>
-	
-	
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
