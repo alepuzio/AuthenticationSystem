@@ -11,7 +11,7 @@ import net.alepuzio.authsys.domain.user.persistence.JDBCRepository;
 public class UserService {
 
 	@Autowired
-	private JDBCRepository jdbcRepository;
+	private UserRepository jdbcRepository;
 	
 	/**
 	 * @return the data of the Generic instance. This instance was not existing in database before calling this method
