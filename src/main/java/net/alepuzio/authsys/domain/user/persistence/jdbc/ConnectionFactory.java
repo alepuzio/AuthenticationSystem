@@ -1,4 +1,4 @@
-package net.alepuzio.authsys.domain.user.persistence;
+package net.alepuzio.authsys.domain.user.persistence.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

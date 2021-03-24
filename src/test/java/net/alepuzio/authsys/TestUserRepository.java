@@ -1,19 +1,19 @@
 package net.alepuzio.authsys;
 
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
 import net.alepuzio.authsys.domain.user.Generic;
-import net.alepuzio.authsys.domain.user.UserRepository;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
-
-import static org.junit.Assert.*;
+import net.alepuzio.authsys.domain.user.persistence.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -3,7 +3,7 @@ package net.alepuzio.authsys.domain.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.alepuzio.authsys.domain.user.persistence.JDBCRepository;
+import net.alepuzio.authsys.domain.user.persistence.UserRepository;
 /**
  * @overview: this class shows the methods to manage the data in the database,
  * abstracting for the engine (JDBC, ORM, etc)*/

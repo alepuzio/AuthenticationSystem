@@ -48,15 +48,21 @@ public class SigninController {
 			logger.info(String.format(">signin(%s,%s)", new TrippleDes().encrypt(username),
 					new TrippleDes().encrypt(password)));
 			found = service.recordedData(userToRead);
+			logger.info("1");
 			mav.addObject("name", new TrippleDes().decrypt(found.getAnagraphicData().getName()));
+			logger.info("2");
 			mav.addObject("surname", new TrippleDes().decrypt(found.getAnagraphicData().getSurname()));
+			
+			logger.info("3");
 			mav.addObject("vatin", new TrippleDes().decrypt(found.getAnagraphicData().getVatIn()));
+			logger.info("4");
 			mav.addObject("username", new TrippleDes().decrypt(found.getSecurityData().getUsername()));
+			logger.info("4");
 			logger.info(String.format("<signin(%s,%s)", new TrippleDes().encrypt(username),
 					new TrippleDes().encrypt(password)));
 		} catch (Exception e) {
 			error = e.getMessage();
-			logger.error("errors: " + error);
+			logger.error(String.format("errors: %s" ,error, e));
 			viewName = "signin";
 		}
 		mav.addObject("errors", error);

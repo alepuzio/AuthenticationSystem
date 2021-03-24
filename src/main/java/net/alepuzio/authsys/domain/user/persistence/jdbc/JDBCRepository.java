@@ -1,4 +1,4 @@
-package net.alepuzio.authsys.domain.user.persistence;
+package net.alepuzio.authsys.domain.user.persistence.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 import net.alepuzio.authsys.crypto.TrippleDes;
 import net.alepuzio.authsys.crypto.exception.MyException;
 import net.alepuzio.authsys.domain.user.Generic;
-import net.alepuzio.authsys.domain.user.UserRepository;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
+import net.alepuzio.authsys.domain.user.persistence.UserRepository;
 /**
  * @FEATURE_ORM@ change the JDBC component using Spring Data as ORM
  */
