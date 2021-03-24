@@ -24,16 +24,15 @@
 			<id>jdbc</id><!-- The development profile is active by default -->
 			<activation>
 				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>jdbc</value>
+				</property>
 			</activation>
-		</profile>
-		<profile>
-			<id>none</id>
-			<!-- The none profile is active by default, security tip This profile 
-				is not working in any environment in this way I'm forced to explicitate the 
-				profile and I don't have any risk of uncoherent package in the envorinment -->
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			<properties>
+				<activatedProperties>jdbc</activatedProperties>
+			</properties>
+			  
 		</profile>
 		<profile>
 			<id>hibernate</id><!-- The configuration of the hibernate profile -->
@@ -44,6 +43,10 @@
 					<value>hibernate</value>
 				</property>
 			</activation>
+			<properties>
+				<activatedProperties>hibernate</activatedProperties>
+			 </properties>
+			
 		</profile>
 	</profiles>
 
@@ -169,6 +172,12 @@
 			</plugins>
 		</pluginManagement>
 		<finalName>authsys</finalName>
+		<resources>
+        	<resource>
+            	<directory>src/main/resources</directory>
+            	<filtering>true</filtering>
+        	</resource>
+    </resources>
 	</build>
 
 </project>

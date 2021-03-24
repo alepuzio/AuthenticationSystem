@@ -3,6 +3,7 @@ package net.alepuzio.authsys.config;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -17,7 +18,9 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @Controller
 public class DispacherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	private TemplateEngine templateEngine;
-
+	@Value("${spring.profiles.active}")
+	private String activeProfile;
+	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		logger.debug(">getRootConfigClasses");
@@ -52,6 +55,7 @@ public class DispacherServletInitializer extends AbstractAnnotationConfigDispatc
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(WebApplicationContextConfig.class);
 		// Create and register the DispatcherServlet
+		System.out.println(String.format("Profile :[%s]", this.activeProfile));
 		ServletRegistration.Dynamic registration = servletContext.addServlet("authsys", new DispatcherServlet(context));
 		registration.setLoadOnStartup(1);
 		registration.addMapping("/authsys/*");
