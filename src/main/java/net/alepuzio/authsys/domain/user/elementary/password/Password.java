@@ -6,7 +6,12 @@ package net.alepuzio.authsys.domain.user.elementary.password;
 public class Password {
 
 	public String getValue() {
-		return value;
+		return this.value;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Password [value=%s]", value);
 	}
 
 	public Password(String value) {

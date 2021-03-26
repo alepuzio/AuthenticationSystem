@@ -10,10 +10,10 @@ import javax.persistence.UniqueConstraint;
  * @FEATURE_ORM@ draft to using Spring Data as ORM
  */
 @Entity
-@Table(name="user",
+@Table(name="anagraphical_user",
 uniqueConstraints = { @UniqueConstraint(columnNames = { "VATIN" }) }
 )
-public class Persistent {
+public class PersistentAnagraphical {
 
 	    
 	    @Column(name = "NAME", length = 50, nullable = false)
@@ -23,21 +23,10 @@ public class Persistent {
 	    @Id
 	    @Column(name = "VATIN", length = 50, nullable = false)
 	    private String vatin;
-	    @Column(name = "cryptedPassword", length = 50, nullable = false)
-	    private String cryptedPassword;
-	    @Column(name = "USERNAME", length = 50, nullable = false)
-	    private String username;
 	    
 	    /*
 	     * TODO add datetiem signup and last successfull login
 	     * */
-
-	    public String getUsername() {
-			return username;
-		}
-		public void setUsername(String username) {
-			this.username = username;
-		}
 
 		
 		public String getName() {
@@ -58,17 +47,11 @@ public class Persistent {
 		public void setVatin(String vatin) {
 			this.vatin = vatin;
 		}
-		public String getCryptedPassword() {
-			return cryptedPassword;
-		}
+
 		@Override
 		public String toString() {
-			return String.format("Persistent [%s,%s,%s,%s,%s]",  name , surname ,vatin, username, cryptedPassword );
+			return String.format("PersistentAnagraphical [%s,%s,%s]",  name , surname ,vatin );
 		}
-		
-		public void setCryptedPassword(String cryptedPassword) {
-			this.cryptedPassword = cryptedPassword;
-		}
-	    
+
 	    
 }

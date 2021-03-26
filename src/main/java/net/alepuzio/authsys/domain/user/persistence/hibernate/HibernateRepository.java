@@ -1,21 +1,21 @@
 package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.crypto.TrippleDes;
-import net.alepuzio.authsys.domain.User;
 import net.alepuzio.authsys.domain.user.Generic;
-import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 import net.alepuzio.authsys.domain.user.persistence.UserRepository;
 
@@ -41,8 +41,9 @@ public class HibernateRepository implements UserRepository {
 		logger.info(String.format(">user(%s)",user.toString()));
 		try{
 			logger.info("entityManager: "+ entityManager);
-		         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
-		         /*CriteriaQuery<Generic> criteria = criteriaBuilder.createQuery(user.getClass());
+/*
+			CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+		         CriteriaQuery<Generic> criteria = criteriaBuilder.createQuery(user.getClass());
 		         criteria.from(user.getClass());
 		         //criteria.
 
@@ -59,19 +60,30 @@ public class HibernateRepository implements UserRepository {
 		logger.info(String.format(">user(%s)",user.toString()));
 		try{
 			logger.info("entityManager: "+ entityManager);
-			Persistent persistent = new Persistent();
-			persistent.setSurname(new TrippleDes().encrypt(user.getSecurityData().getUsername()));
-			persistent.setCryptedPassword(new TrippleDes().encrypt(user.getSecurityData().getPassword().crypto()));
-			Persistent found = entityManager.find(persistent.getClass(), persistent.getUsername());
-			Generic result = new Generic(
+			PersistentSecurity persistent = new PersistentSecurity();
+			PersistentSingleFactor factor = new PersistentSingleFactor();
+			factor.setPassword(new TrippleDes().encrypt(user.getSecurityData().getPassword().crypto()));
+			factor.setUsername(new TrippleDes().encrypt(user.getSecurityData().getUsername()));
+			persistent.setSingleFactor(factor);	
+			final Session session = (Session) entityManager.getDelegate();
+			Criteria c = session.createCriteria(persistent.getClass());
+			List<PersistentSecurity> elements = c.createCriteria("security_user")
+					.add(Restrictions.eq("username", persistent.getSingleFactor().getUsername()))
+					.add(Restrictions.eq("password", persistent.getSingleFactor().getPassword()))
+					.list();
+
+			logger.info("5");
+			/*Generic result = new Generic(
 					new AnagraphicData(
 							found.getName(), 
 							found.getSurname(), 
 							found.getVatin()
 							),
 					new SecurityData(
-							found.getUsername(), found.getCryptedPassword())
-					);
+							found.getSingleFactor().getUsername(), found.getSingleFactor().getPassword())
+					);*/
+			Generic result = new Generic(null, new SecurityData(elements.get(0)));
+			logger.info("6");
 			return result;
 		}catch(Exception e){
 			logger.error(e);
