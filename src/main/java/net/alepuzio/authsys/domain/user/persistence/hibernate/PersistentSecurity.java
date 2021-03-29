@@ -2,11 +2,16 @@ package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
+
 
 /**
  * @FEATURE_ORM@ draft to using Spring Data as ORM
@@ -17,19 +22,21 @@ uniqueConstraints = { @UniqueConstraint(columnNames = { "password","username" })
 )
 public class PersistentSecurity {
 
-		@Embedded
-		@Id
+		@EmbeddedId
 		private PersistentSingleFactor singleFactor;
 		
 	    @Column(name = "vatin", length = 50, nullable = false)
-	    private String vatin;
+	    
+	    @OneToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name = "post_id")
+	    private AnagraphicData anagraphicData;
 	    
 	    /*
 	     * TODO add datetiem signup and last successfull login
 	     * */
 		@Override
 		public String toString() {
-			return String.format("Persistent [%s,%s]", vatin, singleFactor);
+			return String.format("PersistentSecurity [%s,%s]", anagraphicData, singleFactor);
 		}
 		
 		public PersistentSingleFactor getSingleFactor() {
@@ -40,12 +47,14 @@ public class PersistentSecurity {
 			this.singleFactor = singleFactor;
 		}
 
-		public String getVatin() {
-			return vatin;
+		public AnagraphicData getAnagraphicData() {
+			return anagraphicData;
 		}
-		public void setVatin(String vatin) {
-			this.vatin = vatin;
+
+		public void setAnagraphicData(AnagraphicData anagraphicData) {
+			this.anagraphicData = anagraphicData;
 		}
+
 	    
 	    
 }

@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-configuration SYSTEM
+    "classpath://org/hibernate/hibernate-configuration-3.0.dtd">
+ <hibernate-mapping package="net.alepuzio.authsys.domain.user.persistence.hibernate">
+    <class name="PersistentSecurity" table="user_security">
+        <composite-id> 
+        	<key-property name="username"/> 
+        	<key-property name="password"/> 
+        </composite-id>
+        <property name="vatin" column="VATIN" />
+ 
+    </class> 
+</hibernate-mapping>

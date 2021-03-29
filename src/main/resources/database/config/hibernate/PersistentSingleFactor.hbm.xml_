@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-configuration SYSTEM
+    "classpath://org/hibernate/hibernate-configuration-3.0.dtd">
+<hibernate-mapping package="net.alepuzio.authsys.domain.user.persistence.hibernate">
+    <class name="SingleFactor" table="user_security">
+        
+        <composite-id class="SingleFactor" mapped="true"> 
+        	<key-property name="username"/> 
+        	<key-property name="password"/> 
+        </composite-id>
+        <!-- <property name="username" column="USERNAME" />
+        <property name="password" column="PASSWORD" />
+  -->
+    </class> 
+</hibernate-mapping>

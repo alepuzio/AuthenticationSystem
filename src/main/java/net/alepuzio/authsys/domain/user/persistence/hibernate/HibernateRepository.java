@@ -6,11 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.criteria.CriteriaBuilder;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,9 @@ public class HibernateRepository implements UserRepository {
 	private EntityManager entityManager;
 	
 	private Logger logger = Logger.getLogger(this.getClass());
+	
+	@Autowired
+	private SessionBuilder sessionBuilder;
 	
 	@Override
 	public Generic save(Generic user) throws Exception {
@@ -65,13 +69,20 @@ public class HibernateRepository implements UserRepository {
 			factor.setPassword(new TrippleDes().encrypt(user.getSecurityData().getPassword().crypto()));
 			factor.setUsername(new TrippleDes().encrypt(user.getSecurityData().getUsername()));
 			persistent.setSingleFactor(factor);	
-			final Session session = (Session) entityManager.getDelegate();
-			Criteria c = session.createCriteria(factor.getClass());
-			List<PersistentSecurity> elements = c/*c.createCriteria(PersistentSecurity.class/*"security_user"*)*/
-					.add(Restrictions.eq("username", persistent.getSingleFactor().getUsername()))
-					.add(Restrictions.eq("password", persistent.getSingleFactor().getPassword()))
-					.list();
+			
+			//final Session session = (Session) entityManager.getDelegate();
+			final Session session = sessionBuilder.getSessionFactory().getCurrentSession();
+			CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
+		    
+		    PersistentSecurity a = (PersistentSecurity) session
+		    		.createNativeQuery("select * from PersistentSecurity where username = ? and password = ? ")
+		    		.addEntity(PersistentSecurity.class)
+		    		.setParameter(1, new TrippleDes().encrypt(persistent.getSingleFactor().getUsername()))
+		    		.setParameter(2, new TrippleDes().encrypt(persistent.getSingleFactor().getPassword()))
+		    		.list()
+		    		.get(0);
+		    
 			logger.info("5");
 			/*Generic result = new Generic(
 					new AnagraphicData(
@@ -82,8 +93,8 @@ public class HibernateRepository implements UserRepository {
 					new SecurityData(
 							found.getSingleFactor().getUsername(), found.getSingleFactor().getPassword())
 					);*/
-			logger.info("risultato: "+ elements);
-			Generic result = new Generic(null, new SecurityData(elements.get(0)));
+			logger.info("risultato: "+ a);
+			Generic result = new Generic(null, new SecurityData(a));
 			logger.info("6");
 			return result;
 		}catch(Exception e){

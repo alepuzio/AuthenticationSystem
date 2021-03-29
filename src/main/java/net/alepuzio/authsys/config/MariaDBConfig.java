@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * @overview: this class incapsulate the connection data to the database
  * */
 @Component
-public class MariaDBConfig {
+public class MariaDBConfig implements SQLDBConfig {
 	
 	@Value( "${spring.datasource.url}" )
 	private String url;
@@ -17,20 +17,48 @@ public class MariaDBConfig {
 	@Value( "${spring.datasource.driver-class-name}" )
 	private String driver;
 
-	public String getUrl() {
+	@Value( "${spring.jpa.hibernate.thread}" )
+	private String thread;
+
+	@Value( "${spring.jpa.hibernate.show_sql}" )
+	private String showSQL;
+
+	@Value( "${spring.jpa.hibernate.dialect}" )
+	private String dialect;
+
+	@Override
+	public String url() {
 		return url;
 	}
 
-	public String getUsername() {
+	@Override
+	public String username() {
 		return username;
 	}
 
-	public String getPassword() {
+	@Override
+	public String password() {
 		return password;
 	}
 
-	public String getDriver() {
+	@Override
+	public String driver() {
 		return driver;
+	}
+
+	@Override
+	public String dialect() {
+		return dialect;
+	}
+
+	@Override
+	public String showSQL() {
+		return showSQL;
+	}
+
+	@Override
+	public String thread() {
+		return thread;
 	}
 
 

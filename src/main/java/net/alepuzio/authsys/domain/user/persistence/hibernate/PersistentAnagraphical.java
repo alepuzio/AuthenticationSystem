@@ -1,15 +1,18 @@
 package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 /**
  * @FEATURE_ORM@ draft to using Spring Data as ORM
  */
-@Entity
+//@Entity
 @Table(name="anagraphical_user",
 uniqueConstraints = { @UniqueConstraint(columnNames = { "VATIN" }) }
 )
@@ -21,6 +24,10 @@ public class PersistentAnagraphical {
 	    @Column(name = "surname", length = 50, nullable = false)
 	    private String surname;
 	    @Id
+	    @OneToOne(mappedBy = "security_user"
+		, cascade = CascadeType.ALL
+		, fetch = FetchType.LAZY
+		, optional = false)
 	    @Column(name = "vatin", length = 50, nullable = false)
 	    private String vatin;
 	    

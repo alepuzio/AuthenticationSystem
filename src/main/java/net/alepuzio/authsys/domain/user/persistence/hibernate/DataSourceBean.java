@@ -20,14 +20,11 @@ public class DataSourceBean {
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
-
+		//TODO verify if delete
 	    private final Properties hibernateProperties() {
 	        Properties hibernateProperties = new Properties();
-	        hibernateProperties.setProperty(
-	          "hibernate.hbm2ddl.auto", "create-drop");
-	        hibernateProperties.setProperty(
-	          "hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-
+	        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+	        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 	        return hibernateProperties;
 	    }
 
@@ -35,10 +32,10 @@ public class DataSourceBean {
     public DataSource dataSource() {
     	logger.debug(">getDataSource");
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName(mariaDBConfig.getDriver());
-        dataSourceBuilder.url(mariaDBConfig.getUrl());
-        dataSourceBuilder.username(mariaDBConfig.getUsername());
-        dataSourceBuilder.password(mariaDBConfig.getPassword());
+        dataSourceBuilder.driverClassName(mariaDBConfig.driver());
+        dataSourceBuilder.url(mariaDBConfig.url());
+        dataSourceBuilder.username(mariaDBConfig.username());
+        dataSourceBuilder.password(mariaDBConfig.password());
         DataSource dataSource = dataSourceBuilder.build();
         logger.debug("getDataSource");
         return dataSource;
