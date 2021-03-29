@@ -16,12 +16,12 @@ uniqueConstraints = { @UniqueConstraint(columnNames = { "VATIN" }) }
 public class PersistentAnagraphical {
 
 	    
-	    @Column(name = "NAME", length = 50, nullable = false)
+	    @Column(name = "name", length = 50, nullable = false)
 	    private String name;
-	    @Column(name = "SURNAME", length = 50, nullable = false)
+	    @Column(name = "surname", length = 50, nullable = false)
 	    private String surname;
 	    @Id
-	    @Column(name = "VATIN", length = 50, nullable = false)
+	    @Column(name = "vatin", length = 50, nullable = false)
 	    private String vatin;
 	    
 	    /*

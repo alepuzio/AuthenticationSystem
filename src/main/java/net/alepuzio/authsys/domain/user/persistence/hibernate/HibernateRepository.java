@@ -66,8 +66,8 @@ public class HibernateRepository implements UserRepository {
 			factor.setUsername(new TrippleDes().encrypt(user.getSecurityData().getUsername()));
 			persistent.setSingleFactor(factor);	
 			final Session session = (Session) entityManager.getDelegate();
-			Criteria c = session.createCriteria(persistent.getClass());
-			List<PersistentSecurity> elements = c.createCriteria("security_user")
+			Criteria c = session.createCriteria(factor.getClass());
+			List<PersistentSecurity> elements = c/*c.createCriteria(PersistentSecurity.class/*"security_user"*)*/
 					.add(Restrictions.eq("username", persistent.getSingleFactor().getUsername()))
 					.add(Restrictions.eq("password", persistent.getSingleFactor().getPassword()))
 					.list();
@@ -82,6 +82,7 @@ public class HibernateRepository implements UserRepository {
 					new SecurityData(
 							found.getSingleFactor().getUsername(), found.getSingleFactor().getPassword())
 					);*/
+			logger.info("risultato: "+ elements);
 			Generic result = new Generic(null, new SecurityData(elements.get(0)));
 			logger.info("6");
 			return result;

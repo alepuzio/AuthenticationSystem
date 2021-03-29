@@ -10,7 +10,7 @@ import javax.persistence.Embeddable;
 public class PersistentSingleFactor implements Serializable {
 	@Column(name = "password", length = 50, nullable = false)
     private String password;
-    @Column(name = "USERNAME", length = 50, nullable = false)
+    @Column(name = "username", length = 50, nullable = false)
     private String username;
     private static final long serialVersionUID = 1L;
 	

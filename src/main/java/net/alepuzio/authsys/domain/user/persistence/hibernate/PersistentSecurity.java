@@ -21,7 +21,7 @@ public class PersistentSecurity {
 		@Id
 		private PersistentSingleFactor singleFactor;
 		
-	    @Column(name = "VATIN", length = 50, nullable = false)
+	    @Column(name = "vatin", length = 50, nullable = false)
 	    private String vatin;
 	    
 	    /*
