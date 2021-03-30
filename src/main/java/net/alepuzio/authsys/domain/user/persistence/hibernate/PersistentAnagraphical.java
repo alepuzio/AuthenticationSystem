@@ -28,7 +28,7 @@ public class PersistentAnagraphical {
 		, cascade = CascadeType.ALL
 		, fetch = FetchType.LAZY
 		, optional = false)
-	    @Column(name = "vatin", length = 50, nullable = false)
+	    //@Column(name = "vatin", length = 50, nullable = false)
 	    private String vatin;
 	    
 	    /*

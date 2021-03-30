@@ -16,15 +16,17 @@ import net.alepuzio.authsys.config.HibernateConfig;
 import net.alepuzio.authsys.config.SQLDBConfig;
 
 @Component
-@PropertySources({
+
+/*
+ * @PropertySources({
 	@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentAnagraphical.hbm.xml")
 	,@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentSecurity.hbm.xml")
 	,@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentSingleFactor.hbm.xml")
 })
-
+*/
 public class SessionBuilder {
 
-	private SessionFactory sessionFactory = buildSessionFactory();
+	private SessionFactory sessionFactory = getSessionFactory();
 	
     private SessionFactory buildSessionFactory() {
     	

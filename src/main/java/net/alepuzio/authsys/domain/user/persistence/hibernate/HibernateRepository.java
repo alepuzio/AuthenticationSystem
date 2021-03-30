@@ -1,7 +1,6 @@
 package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
 
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -96,6 +95,7 @@ public class HibernateRepository implements UserRepository {
 			logger.info("risultato: "+ a);
 			Generic result = new Generic(null, new SecurityData(a));
 			logger.info("6");
+			session.close();
 			return result;
 		}catch(Exception e){
 			logger.error(e);

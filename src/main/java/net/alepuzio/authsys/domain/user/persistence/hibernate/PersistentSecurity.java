@@ -1,10 +1,9 @@
 package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,10 +24,11 @@ public class PersistentSecurity {
 		@EmbeddedId
 		private PersistentSingleFactor singleFactor;
 		
-	    @Column(name = "vatin", length = 50, nullable = false)
+	  //  @Column(name = "vatin", length = 50, nullable = false)
 	    
-	    @OneToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "post_id")
+	    //@OneToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name = "vatin")
+	    @OneToOne(mappedBy = "vatin", cascade = CascadeType.ALL)
 	    private AnagraphicData anagraphicData;
 	    
 	    /*

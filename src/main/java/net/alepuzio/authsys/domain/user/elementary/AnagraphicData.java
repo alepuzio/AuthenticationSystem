@@ -13,13 +13,13 @@ import net.alepuzio.authsys.domain.MandatoryData;
 public class AnagraphicData implements MandatoryData {
 	private String name = null;
 	private String surname = null;
-	private String vatIn = null;//fiscal code in English
+	private String vatin = null;//fiscal code in English
 	
 	public AnagraphicData(String name, String surname, String vatIn) {
 		super();
 		this.name = name;
 		this.surname = surname;
-		this.vatIn = vatIn;
+		this.vatin = vatIn;
 	}
 
 	public AnagraphicData(Map<String, String> body) {
@@ -32,7 +32,7 @@ public class AnagraphicData implements MandatoryData {
 
 	@Override
 	public String toString() {
-		return "AnagraphicData [name=" + name + ", surname=" + surname + ", vatIn=" + vatIn + "]";
+		return "AnagraphicData [name=" + name + ", surname=" + surname + ", vatIn=" + vatin + "]";
 	}
 	public String getName() {
 		return name;
@@ -40,14 +40,14 @@ public class AnagraphicData implements MandatoryData {
 	public String getSurname() {
 		return surname;
 	}
-	public String getVatIn() {
-		return  vatIn;
+	public String getVatin() {
+		return  vatin;
 	}
 	@Override
 	public boolean valid() {
 		return StringUtils.isNotEmpty(this.name)
 				&& StringUtils.isNotEmpty(this.surname) 
-				&& StringUtils.isNotEmpty(this.vatIn)
+				&& StringUtils.isNotEmpty(this.vatin)
 				;
 	}
 
