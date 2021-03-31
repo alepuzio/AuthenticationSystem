@@ -69,8 +69,8 @@ public class HibernateRepository implements UserRepository {
 			persistent.setSingleFactor(factor);	
 			
 			//final Session session = (Session) entityManager.getDelegate();
-			final Session session = sessionBuilder.getSessionFactory().getCurrentSession();
-			CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+			final Session session = sessionBuilder.buildSessionFactory().getCurrentSession();
+			//CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		    
 		    PersistentSecurity a = (PersistentSecurity) session

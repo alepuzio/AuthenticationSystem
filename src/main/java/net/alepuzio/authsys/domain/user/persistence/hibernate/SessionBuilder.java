@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Component;
@@ -12,24 +13,19 @@ import org.springframework.stereotype.Component;
 import net.alepuzio.authsys.config.database.HibernateSettings;
 
 @Component
-/*
- * @PropertySources({
-	@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentAnagraphical.hbm.xml")
-	,@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentSecurity.hbm.xml")
-	,@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentSingleFactor.hbm.xml")
-	
-})
-*/
 public class SessionBuilder {
 
-	private SessionFactory sessionFactory = getSessionFactory();
+//	private SessionFactory sessionFactory = getSessionFactory();//from singleton to cache
 	
-    private SessionFactory buildSessionFactory() {
+	@Autowired
+	private HibernateSettings hibernateSettings;
+	
+    public SessionFactory buildSessionFactory() {
     	    Configuration cfg = new Configuration()
 	        		.addAnnotatedClass(PersistentSecurity.class)
 	        		//.addClass(PersistentAnagraphical.class)
 	        		.addAnnotatedClass(PersistentSingleFactor.class)
-	        		.addProperties(new HibernateSettings().settings())
+	        		.addProperties(this.hibernateSettings.settings())
 	        		
 	        		.configure();
 	        ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
@@ -38,11 +34,11 @@ public class SessionBuilder {
     }
 
 
-    
+  /*  
     public SessionFactory getSessionFactory() {
     	if(null == sessionFactory){
     		sessionFactory = buildSessionFactory();
     	}
         return sessionFactory;
-    }
+    }*/
 }

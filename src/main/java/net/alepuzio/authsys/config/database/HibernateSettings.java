@@ -6,13 +6,11 @@ import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.alepuzio.authsys.config.SQLDBConfig;
-
 @Component
 public class HibernateSettings  {
     
 	@Autowired
-	private SQLDBConfig dbConfig;
+	private HibernateConfig dbConfig;
 
     public Properties settings(){
     	Properties settings = new Properties();
