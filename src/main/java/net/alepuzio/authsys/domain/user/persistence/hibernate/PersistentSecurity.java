@@ -15,28 +15,25 @@ import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 /**
  * @FEATURE_ORM@ draft to using Spring Data as ORM
  */
-@Entity
-@Table(name="security_user",
-uniqueConstraints = { @UniqueConstraint(columnNames = { "password","username" }) }
-)
+//@Entity
+@Table(name="security_user")
+/*,uniqueConstraints = { @UniqueConstraint(columnNames = { "password","username" }) }*/
 public class PersistentSecurity {
 
 		@EmbeddedId
 		private PersistentSingleFactor singleFactor;
 		
-	  //  @Column(name = "vatin", length = 50, nullable = false)
-	    
-	    //@OneToOne(fetch = FetchType.LAZY)
+/*	    
 	    @JoinColumn(name = "vatin")
 	    @OneToOne(mappedBy = "vatin", cascade = CascadeType.ALL)
 	    private AnagraphicData anagraphicData;
-	    
+	*/    
 	    /*
 	     * TODO add datetiem signup and last successfull login
 	     * */
 		@Override
 		public String toString() {
-			return String.format("PersistentSecurity [%s,%s]", anagraphicData, singleFactor);
+			return String.format("PersistentSecurity [%s,%s]", singleFactor, singleFactor);
 		}
 		
 		public PersistentSingleFactor getSingleFactor() {
@@ -46,7 +43,7 @@ public class PersistentSecurity {
 		public void setSingleFactor(PersistentSingleFactor singleFactor) {
 			this.singleFactor = singleFactor;
 		}
-
+/*
 		public AnagraphicData getAnagraphicData() {
 			return anagraphicData;
 		}
@@ -55,6 +52,6 @@ public class PersistentSecurity {
 			this.anagraphicData = anagraphicData;
 		}
 
-	    
+	*/    
 	    
 }

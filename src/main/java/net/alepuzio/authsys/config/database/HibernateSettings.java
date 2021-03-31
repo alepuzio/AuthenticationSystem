@@ -1,4 +1,4 @@
-package net.alepuzio.authsys.config;
+package net.alepuzio.authsys.config.database;
 
 import java.util.Properties;
 
@@ -6,8 +6,10 @@ import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import net.alepuzio.authsys.config.SQLDBConfig;
+
 @Component
-public class HibernateConfig {
+public class HibernateSettings  {
     
 	@Autowired
 	private SQLDBConfig dbConfig;
@@ -29,4 +31,5 @@ public class HibernateConfig {
         settings.put("hibernate.dbcp.maxWaitMillis",-1);
         return settings;
     }
+
 }

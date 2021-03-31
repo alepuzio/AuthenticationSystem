@@ -10,7 +10,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import net.alepuzio.authsys.config.MariaDBConfig;
+import net.alepuzio.authsys.config.database.MariaDBConfig;
 
 @Configuration
 //@	EnableTransactionManagement

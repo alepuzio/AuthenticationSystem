@@ -12,10 +12,10 @@ import javax.persistence.UniqueConstraint;
 /**
  * @FEATURE_ORM@ draft to using Spring Data as ORM
  */
-//@Entity
+/*@Entity
 @Table(name="anagraphical_user",
 uniqueConstraints = { @UniqueConstraint(columnNames = { "VATIN" }) }
-)
+)*/
 public class PersistentAnagraphical {
 
 	    

@@ -54,7 +54,7 @@ public class SigninController {
 			mav.addObject("surname", new TrippleDes().decrypt(found.getAnagraphicData().getSurname()));
 			
 			logger.info("3");
-			mav.addObject("vatin", new TrippleDes().decrypt(found.getAnagraphicData().getVatIn()));
+			mav.addObject("vatin", new TrippleDes().decrypt(found.getAnagraphicData().getVatin()));
 			logger.info("4");
 			mav.addObject("username", new TrippleDes().decrypt(found.getSecurityData().getUsername()));
 			logger.info("4");

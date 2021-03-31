@@ -1,27 +1,23 @@
 package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
-import java.util.Properties;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Component;
 
-import net.alepuzio.authsys.config.HibernateConfig;
-import net.alepuzio.authsys.config.SQLDBConfig;
+import net.alepuzio.authsys.config.database.HibernateSettings;
 
 @Component
-
 /*
  * @PropertySources({
 	@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentAnagraphical.hbm.xml")
 	,@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentSecurity.hbm.xml")
 	,@PropertySource("classpath:database/config/${spring.profiles.active}/PersistentSingleFactor.hbm.xml")
+	
 })
 */
 public class SessionBuilder {
@@ -29,15 +25,15 @@ public class SessionBuilder {
 	private SessionFactory sessionFactory = getSessionFactory();
 	
     private SessionFactory buildSessionFactory() {
-    	
-	        Configuration cfg = new Configuration()
-	        		.addClass(PersistentSecurity.class)
-	        		.addClass(PersistentAnagraphical.class)
-	        		.addClass(PersistentSingleFactor.class)
-	        		.addProperties(new HibernateConfig().settings())
+    	    Configuration cfg = new Configuration()
+	        		.addAnnotatedClass(PersistentSecurity.class)
+	        		//.addClass(PersistentAnagraphical.class)
+	        		.addAnnotatedClass(PersistentSingleFactor.class)
+	        		.addProperties(new HibernateSettings().settings())
+	        		
 	        		.configure();
-	
 	        ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
+	        //sessionFactory.setPackagesToScan("com.baeldung.hibernate.bootstrap.model" );
 	        return  cfg.buildSessionFactory(sr);
     }
 

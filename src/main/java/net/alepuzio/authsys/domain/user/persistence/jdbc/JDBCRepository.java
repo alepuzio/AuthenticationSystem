@@ -35,14 +35,14 @@ public class JDBCRepository implements UserRepository {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
-			logger.info(String.format(">save(%s)" ,new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatIn()) ));
+			logger.info(String.format(">save(%s)" ,new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatin()) ));
 			conn = connectionFactory.instance();
 			String sql = "INSERT INTO USER(NAME, SURNAME, VATIN, USERNAME, PASSWORD) VALUES(?,?,?,?,?)";
 			stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, new TrippleDes().encrypt(userToSave.getAnagraphicData().getName()));
 			stmt.setString(2, new TrippleDes().encrypt(userToSave.getAnagraphicData().getSurname()));
-			stmt.setString(3, new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatIn()));
+			stmt.setString(3, new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatin()));
 
 			stmt.setString(4, new TrippleDes().encrypt(userToSave.getSecurityData().getUsername()));
 			stmt.setString(5, new TrippleDes().encrypt(userToSave.getSecurityData().getPassword().crypto()));
@@ -50,7 +50,7 @@ public class JDBCRepository implements UserRepository {
 			if (1!= numberRows){
 				throw new Exception(String.format("Insert with [%d] rows", numberRows));
 			}				
-			logger.info(String.format("<save(%s)" ,new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatIn()) ));
+			logger.info(String.format("<save(%s)" ,new TrippleDes().encrypt(userToSave.getAnagraphicData().getVatin()) ));
 		} catch (Exception e) {
 			new MyException(e,logger).error().exception();;
 		} finally {

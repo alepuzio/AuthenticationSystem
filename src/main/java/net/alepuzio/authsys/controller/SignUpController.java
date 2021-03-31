@@ -45,7 +45,7 @@ public class SignUpController {
 			mav.addObject("username", persistent.getSecurityData().getUsername());			
 			mav.addObject("name", persistent.getAnagraphicData().getName());
 			mav.addObject("surname", persistent.getAnagraphicData().getSurname());
-			mav.addObject("vatin", persistent.getAnagraphicData().getVatIn());
+			mav.addObject("vatin", persistent.getAnagraphicData().getVatin());
 			mav.setViewName("home");
 			logger.info(String.format("<record(%s)", new TrippleDes().encrypt(body.toString())));
 		} catch (SQLException sqlException){

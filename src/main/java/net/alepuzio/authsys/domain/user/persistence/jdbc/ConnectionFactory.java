@@ -7,8 +7,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.alepuzio.authsys.config.MariaDBConfig;
 import net.alepuzio.authsys.config.SQLDBConfig;
+import net.alepuzio.authsys.config.database.MariaDBConfig;
 import net.alepuzio.authsys.crypto.exception.MyException;
 /**
  *  @FEATURE_ORM@ change the JDBC component using Spring Data as ORM

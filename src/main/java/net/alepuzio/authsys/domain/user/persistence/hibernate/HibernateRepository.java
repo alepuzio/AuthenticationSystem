@@ -20,7 +20,6 @@ import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 import net.alepuzio.authsys.domain.user.persistence.UserRepository;
 
 @Component
-
 @Profile("hibernate")
 public class HibernateRepository implements UserRepository {
 
