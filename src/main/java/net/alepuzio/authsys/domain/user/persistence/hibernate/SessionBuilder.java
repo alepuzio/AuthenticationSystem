@@ -21,15 +21,18 @@ public class SessionBuilder {
 	private HibernateSettings hibernateSettings;
 	
     public SessionFactory buildSessionFactory() {
+    	System.out.println(">buildSessionFactory");
     	    Configuration cfg = new Configuration()
 	        		.addAnnotatedClass(PersistentSecurity.class)
 	        		//.addClass(PersistentAnagraphical.class)
 	        		.addAnnotatedClass(PersistentSingleFactor.class)
-	        		.addProperties(this.hibernateSettings.settings())
-	        		
+	        		//.addProperties(this.hibernateSettings.settings())
+	        		.setProperties(this.hibernateSettings.settings())
 	        		.configure();
+    	    System.out.println("1");
 	        ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
 	        //sessionFactory.setPackagesToScan("com.baeldung.hibernate.bootstrap.model" );
+	        System.out.println("<buildSessionFactory");
 	        return  cfg.buildSessionFactory(sr);
     }
 

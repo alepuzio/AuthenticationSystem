@@ -1,15 +1,10 @@
 package net.alepuzio.authsys.domain.user.persistence.hibernate;
 
 
-import javax.persistence.CascadeType;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
-import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 
 
 /**
@@ -21,7 +16,9 @@ import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 public class PersistentSecurity {
 
 		@EmbeddedId
-		private PersistentSingleFactor singleFactor;
+		   @AttributeOverride(name="username", column=@Column(name="username"))
+		   @AttributeOverride(name="password", column=@Column(name="password"))
+		private PersistentSingleFactor id;
 		
 /*	    
 	    @JoinColumn(name = "vatin")
@@ -33,15 +30,15 @@ public class PersistentSecurity {
 	     * */
 		@Override
 		public String toString() {
-			return String.format("PersistentSecurity [%s,%s]", singleFactor, singleFactor);
+			return String.format("PersistentSecurity [%s,%s]", id, id);
 		}
 		
-		public PersistentSingleFactor getSingleFactor() {
-			return singleFactor;
+		public PersistentSingleFactor getId() {
+			return id;
 		}
 
-		public void setSingleFactor(PersistentSingleFactor singleFactor) {
-			this.singleFactor = singleFactor;
+		public void setId(PersistentSingleFactor singleFactor) {
+			this.id = singleFactor;
 		}
 /*
 		public AnagraphicData getAnagraphicData() {

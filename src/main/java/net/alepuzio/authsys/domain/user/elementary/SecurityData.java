@@ -27,9 +27,9 @@ public class SecurityData implements MandatoryData {
 		super();
 		System.out.println("costru security");
 		System.out.println("costru security1:"+persistentSecurity);
-		this.username = persistentSecurity.getSingleFactor().getUsername();
+		this.username = persistentSecurity.getId().getUsername();
 		System.out.println("costru security 2");
-		this.password = new Password(persistentSecurity.getSingleFactor().getPassword());
+		this.password = new Password(persistentSecurity.getId().getPassword());
 	}
 
 	

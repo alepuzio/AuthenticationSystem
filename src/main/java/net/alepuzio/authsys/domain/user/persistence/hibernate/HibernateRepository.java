@@ -66,7 +66,7 @@ public class HibernateRepository implements UserRepository {
 			PersistentSingleFactor factor = new PersistentSingleFactor();
 			factor.setPassword(new TrippleDes().encrypt(user.getSecurityData().getPassword().crypto()));
 			factor.setUsername(new TrippleDes().encrypt(user.getSecurityData().getUsername()));
-			persistent.setSingleFactor(factor);	
+			persistent.setId(factor);	
 			
 			//final Session session = (Session) entityManager.getDelegate();
 			final Session session = sessionBuilder.buildSessionFactory().getCurrentSession();
@@ -76,8 +76,8 @@ public class HibernateRepository implements UserRepository {
 		    PersistentSecurity a = (PersistentSecurity) session
 		    		.createNativeQuery("select * from PersistentSecurity where username = ? and password = ? ")
 		    		.addEntity(PersistentSecurity.class)
-		    		.setParameter(1, new TrippleDes().encrypt(persistent.getSingleFactor().getUsername()))
-		    		.setParameter(2, new TrippleDes().encrypt(persistent.getSingleFactor().getPassword()))
+		    		.setParameter(1, new TrippleDes().encrypt(persistent.getId().getUsername()))
+		    		.setParameter(2, new TrippleDes().encrypt(persistent.getId().getPassword()))
 		    		.list()
 		    		.get(0);
 		    

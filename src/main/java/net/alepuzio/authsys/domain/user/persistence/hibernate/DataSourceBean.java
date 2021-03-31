@@ -14,21 +14,14 @@ import net.alepuzio.authsys.config.database.MariaDBConfig;
 
 @Configuration
 //@	EnableTransactionManagement
+@Deprecated//TODO do delete?
 public class DataSourceBean {
 	@Autowired
 	private MariaDBConfig mariaDBConfig;
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
-		//TODO verify if delete
-	    private final Properties hibernateProperties() {
-	        Properties hibernateProperties = new Properties();
-	        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-	        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-	        return hibernateProperties;
-	    }
-
-	    @Bean
+	@Bean
     public DataSource dataSource() {
     	logger.debug(">getDataSource");
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -37,7 +30,7 @@ public class DataSourceBean {
         dataSourceBuilder.username(mariaDBConfig.username());
         dataSourceBuilder.password(mariaDBConfig.password());
         DataSource dataSource = dataSourceBuilder.build();
-        logger.debug("getDataSource");
+        logger.debug("<getDataSource");
         return dataSource;
     }
     
