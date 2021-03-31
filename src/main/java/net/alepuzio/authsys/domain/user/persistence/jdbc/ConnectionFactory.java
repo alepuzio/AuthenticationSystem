@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.config.SQLDBConfig;
@@ -16,8 +17,8 @@ import net.alepuzio.authsys.crypto.exception.MyException;
 @Component
 public class ConnectionFactory {
 
-	@Autowired
-	private SQLDBConfig dbConfig;
+	@Autowired(required = true)
+	private net.alepuzio.authsys.config.database.MariaDBConfig dbConfig;
 
 	private Logger logger = Logger.getLogger(this.getClass());
 

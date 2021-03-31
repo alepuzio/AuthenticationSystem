@@ -1,9 +1,11 @@
 package net.alepuzio.authsys.config.database;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.config.SQLDBConfig;
 
+@Component
 public class HibernateConfig implements SQLDBConfig {
 
 	@Value( "${spring.datasource.url}" )
