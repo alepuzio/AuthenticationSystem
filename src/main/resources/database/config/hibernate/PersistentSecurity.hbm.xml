@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
     <class name="net.alepuzio.authsys.domain.user.persistence.hibernate.PersistentSecurity" 
-    table="user_security" composite-id="id">
+    table="user_security" composite-id="net.alepuzio.authsys.domain.user.persistence.hibernate.PersistentSingleFactor">
         <property name="vatin" column="VATIN"/>
         <composite-id name ="id"  class = "net.alepuzio.authsys.domain.user.persistence.hibernate.PersistentSingleFactor">
-              <key-property name="username" column="username" />
-              <key-property name="password" column="password" />
+              <key-property name="username" column="username" not-null="true"/>
+              <key-property name="password" column="password" not-null="true"/>
         </composite-id>
     </class>
 </hibernate-mapping>

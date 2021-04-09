@@ -20,7 +20,6 @@
 
         <!-- add resources here -->
         <mapping resource="PersistentSecurity.hbm.xml"/>
-        <mapping resource="PersistentSingleFactor.hbm.xml"/>
-
+        
     </session-factory>
 </hibernate-configuration>
