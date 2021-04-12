@@ -44,8 +44,7 @@ public class JpaConfig {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setDatabase(Database.MYSQL);
-		vendorAdapter.setGenerateDdl(Boolean.getBoolean(mariaDBConfig.getDdl()));// TODO
-																					// fix
+		vendorAdapter.setGenerateDdl(Boolean.getBoolean(mariaDBConfig.getDdl()));
 		vendorAdapter.setShowSql(Boolean.getBoolean(mariaDBConfig.getShowSql()));
 
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
@@ -64,12 +63,12 @@ public class JpaConfig {
 		return properties;
 	}
 
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory(sessionFactory().getObject());
-		return txManager;
-	}
+//	@Bean
+//	public PlatformTransactionManager transactionManager() {
+//		JpaTransactionManager txManager = new JpaTransactionManager();
+//		txManager.setEntityManagerFactory(sessionFactory().getObject());
+//		return txManager;
+//	}
 
 //	@Bean
 //	public HibernateJpaSessionFactoryBean sessionFactory(EntityManagerFactory emf) {
