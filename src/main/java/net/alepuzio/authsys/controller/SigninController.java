@@ -49,9 +49,9 @@ public class SigninController {
 					new TrippleDes().encrypt(password)));
 			logger.info("service:"+service);
 			found = service.recordedData(userToRead);
-			mav.addObject("name", new TrippleDes().decrypt(found.getAnagraphicData().getName()));
-			mav.addObject("surname", new TrippleDes().decrypt(found.getAnagraphicData().getSurname()));
-			mav.addObject("vatin", new TrippleDes().decrypt(found.getAnagraphicData().getVatIn()));
+			mav.addObject("name", found.getAnagraphicData().getName().decrypt());
+			mav.addObject("surname", found.getAnagraphicData().getSurname().decrypt());
+			mav.addObject("vatin", found.getAnagraphicData().getVatIn().decrypt());
 			mav.addObject("username", new TrippleDes().decrypt(found.getSecurityData().getUsername()));
 			logger.info(String.format("<signin(%s,%s)", new TrippleDes().encrypt(username),
 					new TrippleDes().encrypt(password)));

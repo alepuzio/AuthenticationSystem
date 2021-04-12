@@ -14,6 +14,7 @@ import net.alepuzio.authsys.domain.User;
 import net.alepuzio.authsys.domain.user.Generic;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
+import net.alepuzio.authsys.domain.user.elementary.cripto.desede.banal.Banal;
 import net.alepuzio.authsys.domain.user.elementary.vatin.Italian;
 
 public class TestSignUp {
@@ -25,7 +26,9 @@ public class TestSignUp {
 		String vatIn = null;
 		String username = null;
 		String password = null;
-		User user = new Generic(new AnagraphicData(name, surname, vatIn), new SecurityData(username, password));
+		User user = new Generic(new AnagraphicData(new Banal(name),
+				new Banal(surname),
+				new Banal(vatIn)), new SecurityData(username, password));
 		assertFalse(user.valid());
 	}
 	@Test
@@ -35,7 +38,8 @@ public class TestSignUp {
 		String vatIn = "    ";
 		String username = "    ";
 		String password = "    ";
-		User user = new Generic(new AnagraphicData(name, surname, vatIn), new SecurityData(username, password));
+		User user = new Generic(new AnagraphicData(new Banal(name), new Banal(surname),
+				new Banal(vatIn)), new SecurityData(username, password));
 		try {
 			assertTrue(user.valid());
 		} catch (Exception e) {
@@ -50,7 +54,8 @@ public class TestSignUp {
 		String vatIn = "PZLLSN00A00A000A";
 		String username = "alex123";
 		String password = "aruba123";
-		User user = new Generic(new AnagraphicData(name, surname, vatIn), new SecurityData(username, password));
+		User user = new Generic(new AnagraphicData(new Banal(name),
+				new Banal(surname),new Banal( vatIn)), new SecurityData(username, password));
 		assertTrue(user.valid());
 	}
 
@@ -62,7 +67,8 @@ public class TestSignUp {
 		String vatIn = "PZLLSK00A00A000A";
 		String username = "alex123";
 		String password = "aruba123";
-		User user = new Italian(new Generic(new AnagraphicData(name, surname, vatIn), new SecurityData(username, password)));
+		User user = new Italian(new Generic(new AnagraphicData(new Banal(name)
+				, new Banal(surname), new Banal(vatIn)), new SecurityData(username, password)));
 		assertFalse(user.valid());
 	}
 

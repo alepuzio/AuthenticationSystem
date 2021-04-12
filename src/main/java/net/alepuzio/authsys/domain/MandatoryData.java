@@ -1,7 +1,8 @@
 package net.alepuzio.authsys.domain;
 
 /**
- * @overview this class show the behaviour of the mandatory data of the recored user 
+ * @overview this class show the behaviour of the mandatory data of the recored use
+ * @deprecated VERIFY IF MERGE WITH uNDERSTANDABLE 
  * */
 public interface MandatoryData {
 

@@ -1,53 +1,46 @@
 package net.alepuzio.authsys.domain.user.elementary;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
 
 import net.alepuzio.authsys.domain.MandatoryData;
+import net.alepuzio.authsys.domain.user.elementary.cripto.Understandable;
 /**
  * @overview: this class represent the anagraphic data of an user
  * */
 public class AnagraphicData implements MandatoryData {
-	private String name = null;
-	private String surname = null;
-	private String vatIn = null;//fiscal code in English
+
+	private Understandable name = null;
+	private Understandable surname = null;
+	private Understandable vatIn = null;//fiscal code in English
 	
-	public AnagraphicData(String name, String surname, String vatIn) {
+
+public AnagraphicData(Understandable name,
+			Understandable surname, 
+			Understandable vatIn) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.vatIn = vatIn;
 	}
 
-	public AnagraphicData(Map<String, String> body) {
-		this(body.get("name"),body.get("surname"), body.get("vatin"));
-	}
-
-	public AnagraphicData(ResultSet rs) throws SQLException {
-		this(rs.getString("NAME"),rs.getString("SURNAME"), rs.getString("VATIN"));
-	}
-
 	@Override
 	public String toString() {
 		return "AnagraphicData [name=" + name + ", surname=" + surname + ", vatIn=" + vatIn + "]";
 	}
-	public String getName() {
+	public Understandable getName() {
 		return name;
 	}
-	public String getSurname() {
+	public Understandable getSurname() {
 		return surname;
 	}
-	public String getVatIn() {
+	public Understandable getVatIn() {
 		return  vatIn;
 	}
 	@Override
 	public boolean valid() {
-		return StringUtils.isNotEmpty(this.name)
-				&& StringUtils.isNotEmpty(this.surname) 
-				&& StringUtils.isNotEmpty(this.vatIn)
+		return StringUtils.isNotEmpty(this.name.decrypt())
+				&& StringUtils.isNotEmpty(this.surname.decrypt()) 
+				&& StringUtils.isNotEmpty(this.vatIn.decrypt())
 				;
 	}
 

@@ -16,7 +16,7 @@ import net.alepuzio.authsys.crypto.TrippleDes;
 import net.alepuzio.authsys.crypto.exception.MyException;
 import net.alepuzio.authsys.domain.user.Generic;
 import net.alepuzio.authsys.domain.user.UserService;
-import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
+import net.alepuzio.authsys.domain.user.elementary.FactoryAnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 
 /**
@@ -40,7 +40,7 @@ public class SignUpController {
 		try {
 			logger.info(String.format(">record(%s)", new TrippleDes().encrypt(body.toString())));
 			validation(body);
-			userToRecord = new Generic(new AnagraphicData(body), new SecurityData(body));
+			userToRecord = new Generic(new FactoryAnagraphicData().map(body), new SecurityData(body));
 			Generic persistent = service.save(userToRecord);
 			mav.addObject("username", persistent.getSecurityData().getUsername());			
 			mav.addObject("name", persistent.getAnagraphicData().getName());
