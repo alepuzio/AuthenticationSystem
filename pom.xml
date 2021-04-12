@@ -46,8 +46,22 @@
 			<properties>
 				<activatedProperties>hibernate</activatedProperties>
 			 </properties>
-			
 		</profile>
+
+		<profile>
+			<id>spring-jpa</id><!-- The configuration of the spring jpa profile -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>spring-jpa</value>
+				</property>
+			</activation>
+			<properties>
+				<activatedProperties>spring-jpa</activatedProperties>
+			 </properties>
+		</profile>
+
 	</profiles>
 
 	<dependencies>

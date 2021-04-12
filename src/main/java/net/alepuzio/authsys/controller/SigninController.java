@@ -47,6 +47,7 @@ public class SigninController {
 		try {
 			logger.info(String.format(">signin(%s,%s)", new TrippleDes().encrypt(username),
 					new TrippleDes().encrypt(password)));
+			logger.info("service:"+service);
 			found = service.recordedData(userToRead);
 			mav.addObject("name", new TrippleDes().decrypt(found.getAnagraphicData().getName()));
 			mav.addObject("surname", new TrippleDes().decrypt(found.getAnagraphicData().getSurname()));

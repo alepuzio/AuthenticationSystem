@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @EnableCaching//allow the Profile mechanism
 @ComponentScan({ "net.alepuzio.authsys" })
-@Profile({"jdbc", "hibernate","none"})
+@Profile({"jdbc", "hibernate","hibernate"})
 public class WebApplicationContextConfig implements WebMvcConfigurer {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
