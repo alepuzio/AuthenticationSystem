@@ -18,6 +18,7 @@
 	</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.test.skip>false</maven.test.skip>
 	</properties>
 	<profiles><!-- The configuration of the development profile -->
 		<profile>
@@ -32,7 +33,7 @@
 			<properties>
 				<activatedProperties>jdbc</activatedProperties>
 			</properties>
-			  
+
 		</profile>
 		<profile>
 			<id>hibernate</id><!-- The configuration of the hibernate profile -->
@@ -45,7 +46,7 @@
 			</activation>
 			<properties>
 				<activatedProperties>hibernate</activatedProperties>
-			 </properties>
+			</properties>
 		</profile>
 
 		<profile>
@@ -59,7 +60,7 @@
 			</activation>
 			<properties>
 				<activatedProperties>spring-jpa</activatedProperties>
-			 </properties>
+			</properties>
 		</profile>
 
 	</profiles>
@@ -135,20 +136,20 @@
 			<artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
 		<dependency>
-	    		<groupId>commons-codec</groupId>
-		    	<artifactId>commons-codec</artifactId>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
 		</dependency>
 		<dependency>
-	   		<groupId>org.springframework.data</groupId>
-	   		<artifactId>spring-data-jpa</artifactId>
-		</dependency>	
-		
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
+				<plugin><!-- spring boot -->
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
@@ -184,15 +185,20 @@
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
+				<plugin><!-- run test -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M5</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<finalName>authsys</finalName>
 		<resources>
-        	<resource>
-            	<directory>src/main/resources</directory>
-            	<filtering>true</filtering>
-        	</resource>
-    </resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 
 </project>
