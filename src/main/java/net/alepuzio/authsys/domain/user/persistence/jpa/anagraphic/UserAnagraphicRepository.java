@@ -6,8 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.CrudRepository;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "net.alepuzio.authsys.domain.user.persistence.jpa.security")
-
+@EnableJpaRepositories(basePackages = "net.alepuzio.authsys.domain.user.persistence.jpa.anagraphic")
 @Profile("spring-jpa")
 public interface UserAnagraphicRepository extends CrudRepository<UserAnagraphic, Long>  {
 
