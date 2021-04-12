@@ -8,21 +8,21 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
-import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import net.alepuzio.authsys.config.MariaDBConfig;
 
 @Component
 @Profile("spring-jpa")
+@EnableTransactionManagement
 public class JpaConfig {
 
 /*	@PersistenceUnit
@@ -33,11 +33,6 @@ public class JpaConfig {
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
-	@Bean
-	public DataSource dataSource() {
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		return builder.setType(EmbeddedDatabaseType.HSQL).build();
-	}
 
 	@Bean(name = "entityManagerFactory")
 	public LocalSessionFactoryBean sessionFactory() {
@@ -80,4 +75,14 @@ public class JpaConfig {
 	// protected SessionFactory getSessionFactory() {
 	// return emf.unwrap(SessionFactory.class);
 	// }
+	
+	@Bean
+	public DataSource dataSource(){
+	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+	    dataSource.setDriverClassName(mariaDBConfig.getDriver());
+	    dataSource.setUrl(mariaDBConfig.getUrl());
+	    dataSource.setUsername( mariaDBConfig.getUsername());
+	    dataSource.setPassword( mariaDBConfig.getPassword());
+	    return dataSource;
+	}
 }
