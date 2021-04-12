@@ -1,4 +1,4 @@
-package net.alepuzio.authsys.domain.user.elementary.cripto.desede.banal;
+package net.alepuzio.authsys.domain.user.elementary.cripto.banal;
 
 import net.alepuzio.authsys.domain.user.elementary.cripto.Understandable;
 

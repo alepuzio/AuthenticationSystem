@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import net.alepuzio.authsys.crypto.TrippleDes;
 import net.alepuzio.authsys.crypto.exception.MyException;
 import net.alepuzio.authsys.domain.user.Generic;
-import net.alepuzio.authsys.domain.user.UserRepository;
 import net.alepuzio.authsys.domain.user.elementary.FactoryAnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 /**
@@ -22,10 +21,9 @@ import net.alepuzio.authsys.domain.user.elementary.SecurityData;
 
 @Component
 @Profile("jdbc")
-public class JDBCRepository implements UserRepository {
+public class JDBCRepository implements UserOnDatabase {
 
 	private Logger logger = Logger.getLogger(this.getClass());
-
 
 	@Autowired
 	private ConnectionFactory connectionFactory;

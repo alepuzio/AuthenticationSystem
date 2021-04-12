@@ -11,17 +11,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import net.alepuzio.authsys.domain.user.Generic;
-import net.alepuzio.authsys.domain.user.UserRepository;
 import net.alepuzio.authsys.domain.user.elementary.AnagraphicData;
 import net.alepuzio.authsys.domain.user.elementary.SecurityData;
-import net.alepuzio.authsys.domain.user.elementary.cripto.desede.banal.Banal;
+import net.alepuzio.authsys.domain.user.elementary.cripto.banal.Banal;
+import net.alepuzio.authsys.domain.user.persistence.UserOnDatabase;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestUserRepository {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserOnDatabase userRepository;
 	
 	@Test
 	public void testSave() {

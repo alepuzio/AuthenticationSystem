@@ -3,8 +3,8 @@ package net.alepuzio.authsys.domain.user.elementary;
 import java.sql.ResultSet;
 import java.util.Map;
 
+import net.alepuzio.authsys.domain.user.elementary.cripto.banal.Banal;
 import net.alepuzio.authsys.domain.user.elementary.cripto.desede.Desede;
-import net.alepuzio.authsys.domain.user.elementary.cripto.desede.banal.Banal;
 
 public class FactoryAnagraphicData {
 	
