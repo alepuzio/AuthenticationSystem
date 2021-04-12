@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -19,6 +19,37 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<profiles><!-- The configuration of the development profile -->
+		<profile>
+			<id>jdbc</id><!-- The development profile is active by default -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>jdbc</value>
+				</property>
+			</activation>
+			<properties>
+				<activatedProperties>jdbc</activatedProperties>
+			</properties>
+			  
+		</profile>
+		<profile>
+			<id>hibernate</id><!-- The configuration of the hibernate profile -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>hibernate</value>
+				</property>
+			</activation>
+			<properties>
+				<activatedProperties>hibernate</activatedProperties>
+			 </properties>
+			
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,10 +85,11 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.taglibs</groupId>
-		    <artifactId>taglibs-standard-impl</artifactId>
-		    <version>1.2.5</version>
-		</dependency>		
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -89,8 +121,8 @@
 			<artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
 		<dependency>
-	    	<groupId>commons-codec</groupId>
-	    	<artifactId>commons-codec</artifactId>
+	    		<groupId>commons-codec</groupId>
+		    	<artifactId>commons-codec</artifactId>
 		</dependency>
 		<dependency>
 	   		<groupId>org.springframework.data</groupId>
@@ -141,6 +173,12 @@
 			</plugins>
 		</pluginManagement>
 		<finalName>authsys</finalName>
+		<resources>
+        	<resource>
+            	<directory>src/main/resources</directory>
+            	<filtering>true</filtering>
+        	</resource>
+    </resources>
 	</build>
 
 </project>

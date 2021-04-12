@@ -1,10 +1,12 @@
 package net.alepuzio.authsys.domain.user;
 
+import org.springframework.stereotype.Component;
 
 //import org.springframework.data.repository.CrudRepository;
 /**
  * @FEATURE_ORM@ draft to using Spring Data as ORM
  */
+@Component
 public interface UserRepository /*extends CrudRepository<Persistent, Integer> */{
 	//public List<Persistent> findByLastName(String lastName);
 	

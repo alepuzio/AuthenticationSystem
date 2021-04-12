@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import net.alepuzio.authsys.crypto.TrippleDes;
@@ -20,6 +21,7 @@ import net.alepuzio.authsys.domain.user.elementary.SecurityData;
  */
 
 @Component
+@Profile("jdbc")
 public class JDBCRepository implements UserRepository {
 
 	private Logger logger = Logger.getLogger(this.getClass());
