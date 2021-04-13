@@ -19,7 +19,7 @@ import net.alepuzio.authsys.domain.user.persistence.jpa.security.UserSecurityRep
 
 @Component
 @Profile("spring-jpa")
-public class JpaService implements UserOnDatabase {
+public class JpaCrud implements UserOnDatabase {
 	
 	private Logger logger = Logger.getLogger(this.getClass());
 

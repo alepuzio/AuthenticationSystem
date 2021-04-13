@@ -14,12 +14,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"net.alepuzio.authsys"})
 @EntityScan({
 	"net.alepuzio.authsys.domain.user.persistence"
-	//, "net.alepuzio.authsys.domain.user.persistence.jpa"
 })
 
 @EnableJpaRepositories({
 	"net.alepuzio.authsys.domain.user.persistence"
-	//,  , "net.alepuzio.authsys.domain.user.persistence.jpa"
 })
 @PropertySources({
 			@PropertySource("classpath:application.properties")

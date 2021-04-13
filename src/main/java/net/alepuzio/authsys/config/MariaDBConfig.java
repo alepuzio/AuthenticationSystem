@@ -17,34 +17,6 @@ public class MariaDBConfig {
 	@Value( "${spring.datasource.driver-class-name}" )
 	private String driver;
 
-	
-	@Value( "${spring.jpa.ddl}" )
-	private String ddl;
-	@Value( "${spring.jpa.show.sql}" )
-	private String showSql;
-	
-	@Value( "${spring.jpa.hibernate.dialect}" )
-	private String springDialect;
-	
-//	@Value( "${hibernate.dialect}" )
-//	private String dialect;
-	
-	
-//	public String getDialect() {
-//		return dialect;
-//	}
-	
-	public String getSpringDialect() {
-		return springDialect;
-	}
-
-	public String getDdl() {
-		return ddl;
-	}
-
-	public String getShowSql() {
-		return showSql;
-	}
 
 	public String getUrl() {
 		return url;
